@@ -1,0 +1,6 @@
+framework module Pods_SavyStoryBoard_SavyStoryBoardUITests {
+  umbrella header "Pods-SavyStoryBoard-SavyStoryBoardUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
