@@ -4,26 +4,25 @@ import jwt from 'jsonwebtoken'
 import nodemailer from 'nodemailer'
 import otpGenerator from 'otp-generator'
 import hbs from 'nodemailer-express-handlebars'
+import * as dotenv from 'dotenv'  
 
 
 
 
-//export async function register (req, res, next) {   EKMIIIII
+
 
 
 
 //Add User
 
 export async function register (req, res, next) {
-  const emailValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-  try {  
-  const { fullname, email, password, numTel } = req.body
-    let profilepic;
-    if (req.file) {
-        profilepic = req.file.profilepic
-      }
-    
-      if ( !(
+ // const emailValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+ // try {  
+  const { fullname, email, password } = req.body
+
+  console.log(fullname,email)
+ 
+      /*if ( !(
           fullname &&
           email &&
           password &&
@@ -33,12 +32,12 @@ export async function register (req, res, next) {
         ))
          {
         res.status(400).send('Required Inputs')
-      }
+      }*/
 
-      if (emailValid.test(email) == false) {
+      /*if (emailValid.test(email) == false) {
         res.status(400).send('email invalid')
         return
-      }
+      }*/
   
       //checking the existance of user
     if (await User.findOne({ email })) {
@@ -47,11 +46,11 @@ export async function register (req, res, next) {
 
     let user = await new User({
         fullname,
-        profilepic,
+       
         email,
-        password: await bcrypt.hash(password, 10),
+        password,
         numTel: req.body.numTel,
-        role: req.body.role
+        //: req.body.role
     })
     user.save()
     .then(user => {
@@ -61,13 +60,13 @@ export async function register (req, res, next) {
     })
     .catch(error => {
         res.json({
-            message: 'An error occured!'
+            message: error
         })
     })
-} res.send(user)
-} catch (err) {
+}// res.send(user)
+/*} catch (err) {
   console.log(err)
-}
+}*/
 }
 
 
@@ -87,6 +86,8 @@ export async function login (req, res)  {
       if (!user.isVerified) {
         res.status(403).send({ user, message: "email non verifié" })
       } else {
+        dotenv.config()
+        
         res.status(200).send({ token, user, message: "success" })
       }
     } else {
@@ -246,7 +247,7 @@ export async function updatePassword  (req, res)  {
     let port = process.env.PORT || 9090
    
     sendEmail({
-      from: process.env.eConstat_Mail,
+      from: process.env.savy_mail,
       to: email,
       subject: 'Confirm your email',
       template: 'email' ,
@@ -261,8 +262,8 @@ export async function updatePassword  (req, res)  {
       let transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-            user: process.env.eConstat_Mail,
-            pass: process.env.eConstat_Password,
+            user: process.env.savy_mail,
+            pass: process.env.savy_password,
           },
         })
         const handlebarOptions = {
@@ -343,7 +344,7 @@ export async function updatePassword  (req, res)  {
   async function sendOTP(email) {
     const user = await User.findOne({ email: email })
     sendEmailOTP({
-      from: process.env.eConstat_Mail,
+      from: process.env.savy_mail,
       to: email,
       subject: "Password reset",
       template: 'otp',
@@ -356,8 +357,8 @@ export async function updatePassword  (req, res)  {
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.eConstat_Mail,
-        pass: process.env.eConstat_Password,
+        user: process.env.savy_mail,
+        pass: process.env.savy_password,
       },
     })
     const handlebarOptions = {
