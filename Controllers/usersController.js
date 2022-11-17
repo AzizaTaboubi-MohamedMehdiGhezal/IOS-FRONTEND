@@ -16,13 +16,17 @@ import * as dotenv from 'dotenv'
 //Add User
 
 export async function register (req, res, next) {
- // const emailValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
- // try {  
+ const emailValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+  try {  
   const { fullname, email, password } = req.body
+  let profilepic;
+  if (req.file) {
+      profilepic = req.file.profilepic
+    }
 
   console.log(fullname,email)
  
-      /*if ( !(
+      if ( !(
           fullname &&
           email &&
           password &&
@@ -32,12 +36,12 @@ export async function register (req, res, next) {
         ))
          {
         res.status(400).send('Required Inputs')
-      }*/
+      }
 
-      /*if (emailValid.test(email) == false) {
+      if (emailValid.test(email) == false) {
         res.status(400).send('email invalid')
         return
-      }*/
+      }
   
       //checking the existance of user
     if (await User.findOne({ email })) {
@@ -46,11 +50,11 @@ export async function register (req, res, next) {
 
     let user = await new User({
         fullname,
-       
+        profilepic,
         email,
         password,
         numTel: req.body.numTel,
-        //: req.body.role
+        role: req.body.role
     })
     user.save()
     .then(user => {
@@ -63,10 +67,10 @@ export async function register (req, res, next) {
             message: error
         })
     })
-}// res.send(user)
-/*} catch (err) {
+}res.send(user)
+} catch (err) {
   console.log(err)
-}*/
+}
 }
 
 
