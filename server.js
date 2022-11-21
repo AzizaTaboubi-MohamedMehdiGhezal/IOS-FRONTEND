@@ -1,15 +1,28 @@
 import express from 'express';
 import mongoose from 'mongoose'; //Importer Mongoose
-
 import user from './Routes/user.js';
-
-
+import passport from "passport";
+import pkg from 'body-parser';
+const { json } = pkg;
 
 
 const app = express();
 const port = process.env.PORT || 9090;
 const databasename = 'MiniProjet';
 
+
+
+
+
+app.use(passport.initialize());
+
+app.use(json());
+app.use("/", user);
+
+/*app.listen(port, async () => {
+  await connect();
+  console.log(`Server listening on ${port}`);
+});*/
 
 //cela affichera les requetes MongoDb ds le terminal
 mongoose.set('debug', true);

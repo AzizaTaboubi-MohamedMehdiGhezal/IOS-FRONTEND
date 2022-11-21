@@ -31,6 +31,7 @@ const userSchema = new Schema(
             required: true, },
         role: {
             type: String,
+            default: 'ROLE_USER',
             enum: {
                 values: ['ROLE_ADMIN', 'ROLE_USER'],
                 message: '{VALUE} is not supported'

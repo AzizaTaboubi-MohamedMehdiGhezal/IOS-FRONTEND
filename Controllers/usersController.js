@@ -5,6 +5,9 @@ import nodemailer from 'nodemailer'
 import otpGenerator from 'otp-generator'
 import hbs from 'nodemailer-express-handlebars'
 import * as dotenv from 'dotenv'  
+import passport from 'passport'
+import strategy from "passport-facebook"
+import strat from 'passport-google-oauth20'
 
 
 
@@ -18,7 +21,7 @@ import * as dotenv from 'dotenv'
 export async function register (req, res, next) {
  const emailValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
   try {  
-  const { fullname, email, password } = req.body
+  const { fullname, email, password, numTel} = req.body
   let profilepic;
   if (req.file) {
       profilepic = req.file.profilepic
@@ -30,8 +33,7 @@ export async function register (req, res, next) {
           fullname &&
           email &&
           password &&
-          numTel &&
-          profilepic 
+          numTel 
           
         ))
          {
@@ -99,6 +101,54 @@ export async function login (req, res)  {
     }
   }
 
+  //Facebook Authentication
+
+  const FacebookStrategy = strategy.Strategy;
+
+  dotenv.config();
+  passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+  
+  passport.deserializeUser(function(obj, done) {
+    done(null, obj);
+  });
+  
+  passport.use(
+    new FacebookStrategy(
+      {
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+        profileFields: ["email", "name"]
+      },
+      function(accessToken, refreshToken, profile, done) {
+        const { email, first_name } = profile._json;
+        const userData = {
+          email,
+          fullname: first_name
+        };
+        new User(userData).save();
+        done(null, profile);
+      }
+    )
+  );
+
+  //Login Google //"http://www.example.com/auth/google/callback"
+
+  var GoogleStrategy = strat.Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 //Show the list of Users
 
 export function index (req, res, next)  {
@@ -117,7 +167,7 @@ export function index (req, res, next)  {
 
 // Show single user
 export function show (req, res, next ) {
-    let userID = req.body.userID
+    let userID = req.body._id 
     User.findById(userID)
     .then(response => {
         res.json({
@@ -204,23 +254,7 @@ export async function updatePassword  (req, res)  {
     }
   } 
 
-  /*
-  export async function forgotPassword  (req, res)  {
-    const resetCode = req.body.resetCode
-    const user = await User.findOne({ email: req.body.email })
   
-    if (user) {
-      // token creation
-      await sendOTP(req.body.email, resetCode)
-  
-      res.status(200).send({
-        message: "L'email de reinitialisation a été envoyé a " + user.email,
-      })
-    } else {
-      res.status(404).send({ message: "User innexistant" })
-    }
-  }
-*/
 //send confirmation mail 
 
   export async function sendConfirmationEmail(req, res) {
