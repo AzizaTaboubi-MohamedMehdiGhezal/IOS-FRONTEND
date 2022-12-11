@@ -1,0 +1,6 @@
+framework module Pods_SavyStoryBoard {
+  umbrella header "Pods-SavyStoryBoard-umbrella.h"
+
+  export *
+  module * { export * }
+}
