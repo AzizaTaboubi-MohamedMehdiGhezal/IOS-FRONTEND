@@ -13,6 +13,8 @@
 		826E421B29351F4B00319E86 /* ConfirmationOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E421A29351F4A00319E86 /* ConfirmationOTPViewController.swift */; };
 		826E421E2935389400319E86 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E421D2935389400319E86 /* AddViewController.swift */; };
 		826E422029356CDC00319E86 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E421F29356CDC00319E86 /* UpdateViewController.swift */; };
+		82708A9C2946489600524422 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82708A9B2946489600524422 /* AboutViewController.swift */; };
+		82708AA02946508900524422 /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82708A9F2946508900524422 /* ButtonExtensions.swift */; };
 		8286E280292312B500D397F0 /* IconDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286E27F292312B500D397F0 /* IconDetailViewController.swift */; };
 		8287512D293BAB7200B7523B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287512C293BAB7200B7523B /* CustomCell.swift */; };
 		828E5A602935106D0062CAD2 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E5A5F2935106D0062CAD2 /* ResetPasswordViewController.swift */; };
@@ -67,6 +69,8 @@
 		826E421A29351F4A00319E86 /* ConfirmationOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationOTPViewController.swift; sourceTree = "<group>"; };
 		826E421D2935389400319E86 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		826E421F29356CDC00319E86 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		82708A9B2946489600524422 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		82708A9F2946508900524422 /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
 		8286E27F292312B500D397F0 /* IconDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconDetailViewController.swift; sourceTree = "<group>"; };
 		8287512C293BAB7200B7523B /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		828E5A5F2935106D0062CAD2 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 		826E421C293536A300319E86 /* Produit */ = {
 			isa = PBXGroup;
 			children = (
+				82F23B4B2922AEDC00B49B0C /* ViewMenuController.swift */,
 				826E421D2935389400319E86 /* AddViewController.swift */,
 				826E421F29356CDC00319E86 /* UpdateViewController.swift */,
 				82AFF6C929358F9500338B36 /* ProductsViewController.swift */,
@@ -178,6 +183,8 @@
 				82B0824829295326002F8580 /* SignUpViewController.swift */,
 				824C0FFE29293C6700264243 /* LoginViewController.swift */,
 				826E421A29351F4A00319E86 /* ConfirmationOTPViewController.swift */,
+				8250F9F52931779A00E70BFC /* ProfilViewController.swift */,
+				82708A9B2946489600524422 /* AboutViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -208,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				8250F9F72935077700E70BFC /* API */,
-				82F23B4B2922AEDC00B49B0C /* ViewMenuController.swift */,
 				82F23B482922AEB700B49B0C /* Controller */,
 				82F23B112922A82400B49B0C /* AppDelegate.swift */,
 				82F23B132922A82400B49B0C /* SceneDelegate.swift */,
@@ -247,8 +253,8 @@
 				8286E27F292312B500D397F0 /* IconDetailViewController.swift */,
 				82F23B4A2922AEDC00B49B0C /* IconCollectionViewCell.swift */,
 				82F23B492922AEDC00B49B0C /* SplashViewController.swift */,
-				8250F9F52931779A00E70BFC /* ProfilViewController.swift */,
 				95839DD42943DAD7000F8154 /* MyUITabViewController.swift */,
+				82708A9F2946508900524422 /* ButtonExtensions.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -493,7 +499,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8250F9F62931779A00E70BFC /* ProfilViewController.swift in Sources */,
+				82708AA02946508900524422 /* ButtonExtensions.swift in Sources */,
 				824C0FFF29293C6700264243 /* LoginViewController.swift in Sources */,
+				82708A9C2946489600524422 /* AboutViewController.swift in Sources */,
 				82F23B162922A82400B49B0C /* ViewController.swift in Sources */,
 				82F23B122922A82400B49B0C /* AppDelegate.swift in Sources */,
 				82F23B142922A82400B49B0C /* SceneDelegate.swift in Sources */,

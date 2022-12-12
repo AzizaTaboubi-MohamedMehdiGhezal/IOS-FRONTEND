@@ -67,49 +67,69 @@ class ProductsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let customCell = tableView.dequeueReusableCell(withIdentifier: "myCell") as! CustomCell
         customCell.nomP.text = products[indexPath.row].nom
-        customCell.marqueP.text = products[indexPath.row].marque
-        customCell.boutiqueP.text = products[indexPath.row].boutique
-        customCell.prixP.text = String(products[indexPath.row].prix)
-        customCell.editBtn.tag = indexPath.row
-        customCell.editBtn.addTarget(self, action: #selector(editProduit), for: .touchUpInside)
-        
+        customCell.prixP.text = "\(String(products[indexPath.row].prix)) TND"
         return customCell
     }
     
-    @objc func editProduit(sender: UIButton) {
-        let row = sender.tag
+    func editProduit(row: Int) {
         let addViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddViewController") as! AddViewController
         addViewController.produit = products[row]
         self.navigationController?.pushViewController(addViewController, animated: true)
     }
     
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return products.count
-//    }
-//
-//   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-//        cell.products.text = products[indexPath.row]
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
+    func deleteProduit(indexPath: IndexPath) {
+        let deleteRequest = DeleteRequest(_id: products[indexPath.row]._id)
+        if let data = try? JSONEncoder().encode(deleteRequest) {
+            if let dictionary = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] {
+                AF.request("\(Constants.BASE_URL)produit/delete_prod", method: .post, parameters: dictionary, encoding: JSONEncoding.default).responseDecodable(of: Products.self) { response in
+                    switch response.result {
+                    case .success(let prodResponse):
+                        print(prodResponse)
+                    case .failure(let error):
+                        print(error)
+                        }
+                    
+                    }
+            }
+        }
+        products.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
     
-//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        arrProd.swapAt(sourceIndexPath.row, destinationIndexPath.row)
-//    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){
-//            (action, view, completionHandler) in self.arrProd.remove(at: indexPath.row)
-//            tableView.beginUpdates()
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//            tableView.endUpdates()
-//            completionHandler(true)
-//        }
-//        return UISwipeActionsConfiguration(actions: [deleteAction])
-//    }
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+            (action, sourceView, completionHandler) in
+
+            let product = self.products[indexPath.row] as Product
+            // Delete the book and associated records
+            self.deleteProduit(indexPath: indexPath)
+            // Remove the menu option from the screen
+            completionHandler(true)
+        } // end action Delete
+
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit") {
+            (action, sourceView, completionHandler) in
+            self.editProduit(row: indexPath.row)
+            completionHandler(true)
+
+        }
+        
+        editAction.backgroundColor = UIColor(red: 255/255.0, green: 128.0/255.0, blue: 0.0, alpha: 1.0)
+    
+        // SWIPE TO LEFT CONFIGURATION
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        // Delete should not delete automatically
+        swipeConfiguration.performsFirstActionWithFullSwipe = false
+        
+        return swipeConfiguration
+    }
+    
+    struct DeleteRequest: Codable {
+        let _id: String
+    }
+
+
 }
 

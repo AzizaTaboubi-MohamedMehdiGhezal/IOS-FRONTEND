@@ -39,6 +39,32 @@ class AddViewController: UIViewController {
             self.nom.center.x = self.view.frame.width / 2
         }, completion: nil)
         
+        mar.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.mar.center.x = self.view.frame.width / 2
+        }, completion: nil)
+        
+        prix.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.prix.center.x = self.view.frame.width / 2
+        }, completion: nil)
+        
+        desc.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.desc.center.x = self.view.frame.width / 2
+        }, completion: nil)
+        
+        ann.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.ann.center.x = self.view.frame.width / 2
+        }, completion: nil)
+        
+        bou.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.bou.center.x = self.view.frame.width / 2
+        }, completion: nil)
+        
+        
         let typeChosen = { (action: UIAction) in
             print(action.title)
             self.typeTxt = action.title
@@ -92,7 +118,6 @@ class AddViewController: UIViewController {
         ann.text = String(produit?.annee ?? 0)
         
         
-        
         let cityChosen = { (action: UIAction) in
             print(action.title)
             self.cityTxt = action.title
@@ -133,6 +158,7 @@ class AddViewController: UIViewController {
                 }
             }
         })
+        
         // Do any additional setup after loading the view.
     }
     
@@ -163,8 +189,8 @@ class AddViewController: UIViewController {
                 }
             }
         }
-    
-        
+        let tabViewController = ProductsViewController()
+        self.present(tabViewController, animated: true)
     }
     
     public class AddRequest: Codable {

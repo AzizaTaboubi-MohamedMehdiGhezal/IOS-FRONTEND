@@ -12,12 +12,6 @@ class CustomCell : UITableViewCell{
     
     @IBOutlet weak var nomP: UILabel!
     
-    @IBOutlet weak var marqueP: UILabel!
-    
-    @IBOutlet weak var boutiqueP: UILabel!
-    
     @IBOutlet weak var prixP: UILabel!
-    
-    @IBOutlet weak internal var editBtn: UIButton!
     
 }

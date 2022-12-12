@@ -76,8 +76,8 @@ class LoginViewController: UIViewController {
                         if (code == 200) {
                             //3adih
                             appDelegate.user = loginResponse
-                            let tabViewController = MyUITabViewController()
-                            self.present(tabViewController, animated: false)
+//                            let tabViewController = MyUITabViewController()
+//                            self.present(tabViewController, animated: false)
                         } else {
                             //mat3adihouch
                             print("fail to connect")
@@ -90,6 +90,8 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+        
+        
         
     }
     
@@ -112,6 +114,7 @@ class LoginViewController: UIViewController {
     public class User: Codable {
         let numTel: String
         let fullname: String
+        let email: String
     }
 
     

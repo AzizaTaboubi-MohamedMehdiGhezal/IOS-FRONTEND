@@ -55,6 +55,56 @@ class UsedProdViewController: UIViewController {
              UIAction(title: "fridge", handler: typeChosen),
              UIAction(title: "other", handler: typeChosen)
            ])
+        type.menu?.children.forEach({ menuItem in
+            if let menuItem = menuItem as? UIAction {
+                if (menuItem.title == produit?.type) {
+                    menuItem.state = .on
+                } else {
+                    menuItem.state = .off
+                }
+            }
+        })
+        
+        let cityChosen = { (action: UIAction) in
+            print(action.title)
+            self.cityTxt = action.title
+        }
+        city.menu = UIMenu(children: [
+             UIAction(title: "Ariana", handler: cityChosen),
+             UIAction(title: "Beja", handler: cityChosen),
+             UIAction(title: "Ben Arous", handler: cityChosen),
+             UIAction(title: "Bizert", handler: cityChosen),
+             UIAction(title: "Gabes", handler: cityChosen),
+             UIAction(title: "Gafsa", handler: cityChosen),
+             UIAction(title: "Jendouba", handler: cityChosen),
+             UIAction(title: "Kairaouan", handler: cityChosen),
+             UIAction(title: "Kasserine", handler: cityChosen),
+             UIAction(title: "Kebili", handler: cityChosen),
+             UIAction(title: "Kef", handler: cityChosen),
+             UIAction(title: "Mahdia", handler: cityChosen),
+             UIAction(title: "Manouba", handler: cityChosen),
+             UIAction(title: "Medenine", handler: cityChosen),
+             UIAction(title: "Monastir", handler: cityChosen),
+             UIAction(title: "Nabeul", handler: cityChosen),
+             UIAction(title: "Sfax", handler: cityChosen),
+             UIAction(title: "Sidi Bouzid", handler: cityChosen),
+             UIAction(title: "Siliana", handler: cityChosen),
+             UIAction(title: "Sousse", handler: cityChosen),
+             UIAction(title: "Tataouine", handler: cityChosen),
+             UIAction(title: "Tozeur", handler: cityChosen),
+             UIAction(title: "Tunis", handler: cityChosen),
+             UIAction(title: "Zaghouan", handler: cityChosen)
+           ])
+        
+        city.menu?.children.forEach({ menuItem in
+            if let menuItem = menuItem as? UIAction {
+                if (menuItem.title == produit?.city) {
+                    menuItem.state = .on
+                } else {
+                    menuItem.state = .off
+                }
+            }
+        })
         
         let anneeChosen = { (action: UIAction) in
             print(action.title)

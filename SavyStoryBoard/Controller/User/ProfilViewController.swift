@@ -9,8 +9,9 @@ import UIKit
 
 class ProfilViewController: UIViewController {
 
-    @IBOutlet weak var SliderView: UICollectionView!
-    @IBOutlet weak var PageView: UIPageControl!
+    @IBOutlet weak var themeLabel: UILabel!
+    @IBOutlet weak var name: UILabel!
+   
     
     var img = [
                 UIImage(named: "jumia"),
@@ -28,13 +29,31 @@ class ProfilViewController: UIViewController {
                 UIImage(named: "tdiscount"),
               ]
     
+    @IBAction func DarkMode(_ sender: UISwitch) {
+        if #available(ios 13.0 , *){
+            let window = UIApplication.shared.windows.first
+            if sender.isOn{
+                themeLabel.text = "Dark Mode"
+
+                window?.overrideUserInterfaceStyle = .dark
+            }else{
+                themeLabel.text = "Light Mode"
+
+                window?.overrideUserInterfaceStyle = .light}
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        name.text = "User name: \(appDelegate.user?.user.fullname ?? "")"
         if (appDelegate.user == nil) {
             self.dismiss(animated: false)
         }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(didTapSignout))
+        
+       // name.text = products[indexPath.row].nom
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
