@@ -29,7 +29,7 @@ class AddViewController: UIViewController {
     private var etatTxt: String = ""
     private var cityTxt: String = ""
 
-    var produit: ProductsViewController.Product?
+    var produit: UserProductsViewController.Product?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,29 +168,22 @@ class AddViewController: UIViewController {
         let prix = Double(prix.text!)!
         let description = desc.text ?? ""
         let boutique = bou.text ?? ""
-        let annee = Int(ann.text!)!
+        let annee = Int(ann.text ?? "0") ?? 0
         
         if (produit == nil) {
-            let addRequest = AddRequest(nom: nom ,marque: marque, prix: prix, type: typeTxt, description: description, boutique: boutique, annee: annee, etat: "Occasion", city: cityTxt)
-            if let data = try? JSONEncoder().encode(addRequest) {
-                if let dictionary = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] {
-                    AF.request("\(Constants.BASE_URL)produit/add_prod", method: .post, parameters: dictionary, encoding: JSONEncoding.default).responseJSON { response in
-                        print(response.data)
-                    }
-                }
+            let addRequest = AddRequest(nom: nom ,marque: marque, prix: prix, type: typeTxt, description: description, boutique: boutique, annee: annee, etat: "Nouveau", city: cityTxt, promo: 30)
+            AF.request("\(Constants.BASE_URL)produit/add_prod", method: .post, parameters: addRequest.getDictionary(), encoding: JSONEncoding.default).responseJSON { response in
+                guard let data = response.data else {return }
+                print(data)
             }
         } else {
             let updateRequest = UpdateRequest(_id: produit?._id ?? "", nom: nom ,marque: marque, prix: prix, type: typeTxt, description: description, boutique: boutique, annee: annee, etat: etatTxt, city: cityTxt)
-            if let data = try? JSONEncoder().encode(updateRequest) {
-                if let dictionary = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] {
-                    AF.request("\(Constants.BASE_URL)produit/update_prod", method: .post, parameters: dictionary, encoding: JSONEncoding.default).responseJSON { response in
-                        print(response.data)
-                    }
-                }
+            AF.request("\(Constants.BASE_URL)produit/update_prod", method: .post, parameters: updateRequest.getDictionary(), encoding: JSONEncoding.default).responseJSON { response in
+                guard let data = response.data else {return }
+                print(data)
             }
         }
-        let tabViewController = ProductsViewController()
-        self.present(tabViewController, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     public class AddRequest: Codable {
@@ -203,8 +196,9 @@ class AddViewController: UIViewController {
         let annee: Int
         let etat: String
         let city: String
+        let promo: Int
         
-        public init(nom: String, marque: String, prix: Double, type: String, description: String, boutique: String, annee:Int ,etat: String, city: String) {
+        init(nom: String, marque: String, prix: Double, type: String, description: String, boutique: String, annee: Int, etat: String, city: String, promo: Int) {
             self.nom = nom
             self.marque = marque
             self.prix = prix
@@ -214,9 +208,7 @@ class AddViewController: UIViewController {
             self.annee = annee
             self.etat = etat
             self.city = city
-            
-            
-            
+            self.promo = promo
         }
     }
     

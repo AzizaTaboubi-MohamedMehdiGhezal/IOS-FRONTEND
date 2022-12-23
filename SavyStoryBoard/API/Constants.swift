@@ -9,5 +9,5 @@ import Foundation
 
 
 class Constants {
-    static let BASE_URL = "http://192.168.1.191:9092/"
+    static let BASE_URL = "http://192.168.1.106:9092/"
 }

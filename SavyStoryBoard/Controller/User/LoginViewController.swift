@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var loginErrorLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,7 @@ class LoginViewController: UIViewController {
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
         let loginRequest = LoginRequest(email: email, password: password)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if let data = try? JSONEncoder().encode(loginRequest) {
             if let dictionary = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] {
                 AF.request("\(Constants.BASE_URL)user/login", method: .post, parameters: dictionary, encoding: JSONEncoding.default).responseDecodable(of: LoginResponse.self) { response in
@@ -72,19 +74,20 @@ class LoginViewController: UIViewController {
                     case .success(let loginResponse):
                         print(loginResponse)
                         let code = response.response?.statusCode
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
                         if (code == 200) {
                             //3adih
                             appDelegate.user = loginResponse
-//                            let tabViewController = MyUITabViewController()
-//                            self.present(tabViewController, animated: false)
+                            self.performSegue(withIdentifier: "loginSegue", sender: self)
                         } else {
                             //mat3adihouch
                             print("fail to connect")
                             appDelegate.user = nil
+                            self.loginErrorLbl.isHidden = false
                         }
                     case .failure(let error):
                         print(error)
+                        appDelegate.user = nil
+                        self.loginErrorLbl.isHidden = false
                         //mat3adihouch
                     }
                 }
@@ -112,6 +115,7 @@ class LoginViewController: UIViewController {
     }
     
     public class User: Codable {
+        let _id: String
         let numTel: String
         let fullname: String
         let email: String

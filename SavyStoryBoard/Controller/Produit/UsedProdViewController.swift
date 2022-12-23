@@ -28,7 +28,7 @@ class UsedProdViewController: UIViewController {
     private var anneeTxt: String = ""
     private var cityTxt: String = ""
     
-    var produit: ProductsViewController.Product?
+    var produit: UserProductsViewController.Product?
     
     override func viewDidLoad() {
         super.viewDidLoad()

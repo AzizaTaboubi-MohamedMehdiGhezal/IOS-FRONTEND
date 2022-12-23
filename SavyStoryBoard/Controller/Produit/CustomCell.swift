@@ -11,7 +11,7 @@ import UIKit
 class CustomCell : UITableViewCell{
     
     @IBOutlet weak var nomP: UILabel!
-    
     @IBOutlet weak var prixP: UILabel!
-    
+    @IBOutlet weak var boutiqueLbl: UILabel!
+    @IBOutlet weak var promoLbl: UILabel!
 }

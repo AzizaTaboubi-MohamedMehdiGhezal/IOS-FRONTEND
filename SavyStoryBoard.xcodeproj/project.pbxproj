@@ -18,7 +18,9 @@
 		8286E280292312B500D397F0 /* IconDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8286E27F292312B500D397F0 /* IconDetailViewController.swift */; };
 		8287512D293BAB7200B7523B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287512C293BAB7200B7523B /* CustomCell.swift */; };
 		828E5A602935106D0062CAD2 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E5A5F2935106D0062CAD2 /* ResetPasswordViewController.swift */; };
-		82AFF6CA29358F9500338B36 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AFF6C929358F9500338B36 /* ProductsViewController.swift */; };
+		8299C97B29562A5A00D9AE30 /* Codable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8299C97A29562A5A00D9AE30 /* Codable+Extension.swift */; };
+		8299C97D2956385200D9AE30 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8299C97C2956385200D9AE30 /* ProductsViewController.swift */; };
+		82AFF6CA29358F9500338B36 /* UserProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AFF6C929358F9500338B36 /* UserProductsViewController.swift */; };
 		82B0824929295326002F8580 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0824829295326002F8580 /* SignUpViewController.swift */; };
 		82B0824B292A442C002F8580 /* ForgotPwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0824A292A442C002F8580 /* ForgotPwViewController.swift */; };
 		82E8B9B4293E2CF00019D0CC /* UsedProdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E8B9B3293E2CF00019D0CC /* UsedProdViewController.swift */; };
@@ -74,7 +76,9 @@
 		8286E27F292312B500D397F0 /* IconDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconDetailViewController.swift; sourceTree = "<group>"; };
 		8287512C293BAB7200B7523B /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		828E5A5F2935106D0062CAD2 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
-		82AFF6C929358F9500338B36 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		8299C97A29562A5A00D9AE30 /* Codable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extension.swift"; sourceTree = "<group>"; };
+		8299C97C2956385200D9AE30 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		82AFF6C929358F9500338B36 /* UserProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProductsViewController.swift; sourceTree = "<group>"; };
 		82B0824829295326002F8580 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		82B0824A292A442C002F8580 /* ForgotPwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPwViewController.swift; sourceTree = "<group>"; };
 		82E8B9B3293E2CF00019D0CC /* UsedProdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedProdViewController.swift; sourceTree = "<group>"; };
@@ -168,9 +172,10 @@
 				82F23B4B2922AEDC00B49B0C /* ViewMenuController.swift */,
 				826E421D2935389400319E86 /* AddViewController.swift */,
 				826E421F29356CDC00319E86 /* UpdateViewController.swift */,
-				82AFF6C929358F9500338B36 /* ProductsViewController.swift */,
+				82AFF6C929358F9500338B36 /* UserProductsViewController.swift */,
 				8287512C293BAB7200B7523B /* CustomCell.swift */,
 				82E8B9B3293E2CF00019D0CC /* UsedProdViewController.swift */,
+				8299C97C2956385200D9AE30 /* ProductsViewController.swift */,
 			);
 			path = Produit;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				82F23B1F2922A82600B49B0C /* LaunchScreen.storyboard */,
 				82F23B222922A82600B49B0C /* Info.plist */,
 				82F23B1A2922A82400B49B0C /* SavyStoryBoard.xcdatamodeld */,
+				8299C97A29562A5A00D9AE30 /* Codable+Extension.swift */,
 			);
 			path = SavyStoryBoard;
 			sourceTree = "<group>";
@@ -506,11 +512,13 @@
 				82F23B122922A82400B49B0C /* AppDelegate.swift in Sources */,
 				82F23B142922A82400B49B0C /* SceneDelegate.swift in Sources */,
 				826E422029356CDC00319E86 /* UpdateViewController.swift in Sources */,
-				82AFF6CA29358F9500338B36 /* ProductsViewController.swift in Sources */,
+				82AFF6CA29358F9500338B36 /* UserProductsViewController.swift in Sources */,
 				826E421B29351F4B00319E86 /* ConfirmationOTPViewController.swift in Sources */,
 				82E8B9B4293E2CF00019D0CC /* UsedProdViewController.swift in Sources */,
 				8287512D293BAB7200B7523B /* CustomCell.swift in Sources */,
+				8299C97B29562A5A00D9AE30 /* Codable+Extension.swift in Sources */,
 				82B0824929295326002F8580 /* SignUpViewController.swift in Sources */,
+				8299C97D2956385200D9AE30 /* ProductsViewController.swift in Sources */,
 				82F23B1C2922A82400B49B0C /* SavyStoryBoard.xcdatamodeld in Sources */,
 				8250F9F92935079700E70BFC /* Constants.swift in Sources */,
 				8286E280292312B500D397F0 /* IconDetailViewController.swift in Sources */,
