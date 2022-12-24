@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821D4ACE29573B4D00A5F983 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D4ACD29573B4D00A5F983 /* HomeViewController.swift */; };
 		824C0FFF29293C6700264243 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824C0FFE29293C6700264243 /* LoginViewController.swift */; };
 		8250F9F62931779A00E70BFC /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8250F9F52931779A00E70BFC /* ProfilViewController.swift */; };
 		8250F9F92935079700E70BFC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8250F9F82935079700E70BFC /* Constants.swift */; };
@@ -65,6 +66,7 @@
 		3EBD7DDB7A8A6536D7DA83BF /* Pods-SavyStoryBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavyStoryBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-SavyStoryBoardTests/Pods-SavyStoryBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		522FDF6993259DB2EC0FEF9D /* Pods-SavyStoryBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavyStoryBoard.release.xcconfig"; path = "Target Support Files/Pods-SavyStoryBoard/Pods-SavyStoryBoard.release.xcconfig"; sourceTree = "<group>"; };
 		63D42F92C562357F7ED46524 /* Pods-SavyStoryBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavyStoryBoardTests.release.xcconfig"; path = "Target Support Files/Pods-SavyStoryBoardTests/Pods-SavyStoryBoardTests.release.xcconfig"; sourceTree = "<group>"; };
+		821D4ACD29573B4D00A5F983 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		824C0FFE29293C6700264243 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8250F9F52931779A00E70BFC /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		8250F9F82935079700E70BFC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				8287512C293BAB7200B7523B /* CustomCell.swift */,
 				82E8B9B3293E2CF00019D0CC /* UsedProdViewController.swift */,
 				8299C97C2956385200D9AE30 /* ProductsViewController.swift */,
+				821D4ACD29573B4D00A5F983 /* HomeViewController.swift */,
 			);
 			path = Produit;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				82AFF6CA29358F9500338B36 /* UserProductsViewController.swift in Sources */,
 				826E421B29351F4B00319E86 /* ConfirmationOTPViewController.swift in Sources */,
 				82E8B9B4293E2CF00019D0CC /* UsedProdViewController.swift in Sources */,
+				821D4ACE29573B4D00A5F983 /* HomeViewController.swift in Sources */,
 				8287512D293BAB7200B7523B /* CustomCell.swift in Sources */,
 				8299C97B29562A5A00D9AE30 /* Codable+Extension.swift in Sources */,
 				82B0824929295326002F8580 /* SignUpViewController.swift in Sources */,

@@ -16,38 +16,44 @@ class ProductsViewController: UIViewController {
     
     enum FilterType {
         case NEW
-        case USED
+        case PROMO
         case ALL
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UINib(nibName: "myCell", bundle: nil), forCellReuseIdentifier: "myCell")
+        switch filterType {
+        case .NEW:
+            self.title = "New products"
+        case .PROMO:
+            self.title = "Products in sales"
+        case .ALL:
+            self.title = "All products"
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        AF.request("\(Constants.BASE_URL)produit/produits", method: .get, encoding: JSONEncoding.default).responseDecodable(of: UserProductsViewController.Products.self) { response in
+        var filter = ""
+        switch self.filterType {
+        case .NEW:
+            filter = "nouveau"
+        case .PROMO:
+            filter = "promotion"
+        case .ALL:
+            filter = ""
+        }
+        AF.request("\(Constants.BASE_URL)produit/produits?filter=\(filter)", method: .get, encoding: JSONEncoding.default).responseDecodable(of: UserProductsViewController.Products.self) { response in
             switch response.result {
             case .success(let prodResponse):
                 print(prodResponse)
                 let code = response.response?.statusCode
                 if (code == 200) {
-                    switch self.filterType {
-                    case .NEW:
-                        self.products = prodResponse.Products.filter {
-                            $0.etat == "Nouveau"
-                        }
-                    case .USED:
-                        self.products = prodResponse.Products.filter {
-                            $0.etat == "Occasion"
-                        }
-                    case .ALL:
-                        self.products = prodResponse.Products
-                    }
+                    self.products = prodResponse.Products
                     self.tableView.reloadData()
                 } else {
                     //mat3adihouch
