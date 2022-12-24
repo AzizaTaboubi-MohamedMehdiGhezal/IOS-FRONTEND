@@ -11,6 +11,7 @@ import Alamofire
 class AddViewController: UIViewController {
 
     
+    @IBOutlet weak var userImgView: UIImageView!
     @IBOutlet weak var nom: UITextField!
     @IBOutlet weak var mar: UITextField!
     @IBOutlet weak var prix: UITextField!
@@ -28,6 +29,8 @@ class AddViewController: UIViewController {
     private var typeTxt: String = ""
     private var etatTxt: String = ""
     private var cityTxt: String = ""
+    
+    var imagePicker = UIImagePickerController()
 
     var produit: UserProductsViewController.Product?
 
@@ -188,6 +191,19 @@ class AddViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func editImageTap(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            print("Button capture")
+
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    
     public class AddRequest: Codable {
         let userID: String
         let nom: String
@@ -255,4 +271,17 @@ class AddViewController: UIViewController {
     }
     */
 
+}
+
+extension AddViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            userImgView.image = image
+          }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("x")
+    }
 }

@@ -17,6 +17,20 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let userDefault = UserDefaults.standard
+        if let data = userDefault.data(forKey: "user") {
+            do {
+                let decoder = JSONDecoder()
+                let user = try decoder.decode(LoginResponse.self, from: data)
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                appDelegate?.user = user
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+            } catch {
+                print("Unable to Decode user (\(error))")
+            }
+        }
+
 
         // Do any additional setup after loading the view.
     }

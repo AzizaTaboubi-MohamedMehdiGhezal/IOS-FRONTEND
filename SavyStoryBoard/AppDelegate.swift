@@ -12,7 +12,19 @@ import GoogleSignIn
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var user: LoginViewController.LoginResponse? = nil
+    var user: LoginViewController.LoginResponse? = nil {
+        didSet {
+            do {
+                let encoder = JSONEncoder()
+                let data = try encoder.encode(user)
+
+                UserDefaults.standard.set(data, forKey: "user")
+
+            } catch {
+                print("Unable to Encode user (\(error))")
+            }
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
