@@ -91,7 +91,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="tapLogin:" destination="87B-pw-Gib" eventType="touchUpInside" id="27G-tJ-kP9"/>
-                                    <segue destination="i7J-Vr-S1y" kind="show" id="vB7-cY-wmF"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" text="Enter your email and we'll send you a link to reset your password" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Did-ab-5w5">
@@ -122,7 +121,7 @@
         <!--ConfirmationOTP View Controller-->
         <scene sceneID="UtX-gt-XMk">
             <objects>
-                <viewController id="i7J-Vr-S1y" customClass="ConfirmationOTPViewController" customModule="SavyStoryBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmationOTPViewController" id="i7J-Vr-S1y" customClass="ConfirmationOTPViewController" customModule="SavyStoryBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yOO-r4-QCF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,7 +150,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="tapLogin:" destination="i7J-Vr-S1y" eventType="touchUpInside" id="OnE-ep-Mmz"/>
-                                    <segue destination="Sqm-fZ-jRl" kind="show" id="ELi-La-yFn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Didn't get a code ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpX-vP-DCq">
@@ -198,7 +196,7 @@
         <!--Reset Password View Controller-->
         <scene sceneID="5rM-lF-2fj">
             <objects>
-                <viewController id="Sqm-fZ-jRl" customClass="ResetPasswordViewController" customModule="SavyStoryBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resetPasswdVC" id="Sqm-fZ-jRl" customClass="ResetPasswordViewController" customModule="SavyStoryBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MIG-gW-yIp">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1216,7 +1214,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m38-e5-zuM">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m38-e5-zuM" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="56" y="122" width="280" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -1521,6 +1519,11 @@
             <point key="canvasLocation" x="2476.9230769230767" y="1419.6682464454975"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="m38-e5-zuM">
+            <size key="intrinsicContentSize" width="196" height="67.333333333333343"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="iuj-MA-3ZJ"/>
     </inferredMetricsTieBreakers>

@@ -13,6 +13,9 @@ class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var newPass: UITextField!
     @IBOutlet weak var confPass: UITextField!
     
+    var email: String = ""
+    var otp: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,11 +26,12 @@ class ResetPasswordViewController: UIViewController {
         let new = newPass.text ?? ""
         let conf = confPass.text ?? ""
         
-        let restPassRequest = RestPassRequest(new: new, conf: conf)
+        let restPassRequest = RestPassRequest(newPass: new, email: email, otp: otp)
         if let data = try? JSONEncoder().encode(restPassRequest) {
             if let dictionary = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] {
                 AF.request("\(Constants.BASE_URL)user/ResetPassword", method: .post, parameters: dictionary, encoding: JSONEncoding.default).responseJSON { response in
                     print(response.data)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             }
         }
@@ -35,13 +39,14 @@ class ResetPasswordViewController: UIViewController {
     }
     
     public class RestPassRequest: Codable {
-        let new: String
-        let conf: String
-    
-        public init(new: String, conf:String ) {
-            self.new = new
-            self.conf = conf
-            
+        let newPass: String
+        let email: String
+        let otp: String
+        
+        init(newPass: String, email: String, otp: String) {
+            self.newPass = newPass
+            self.email = email
+            self.otp = otp
         }
     }
 

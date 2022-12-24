@@ -14,10 +14,12 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.3.0)
+  - JVFloatLabeledTextField (1.2.2)
 
 DEPENDENCIES:
   - Alamofire
   - GoogleSignIn
+  - JVFloatLabeledTextField
 
 SPEC REPOS:
   trunk:
@@ -26,6 +28,7 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - JVFloatLabeledTextField
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -33,7 +36,8 @@ SPEC CHECKSUMS:
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
+  JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
 
-PODFILE CHECKSUM: 44942373dbaf94b3e826fbf5d43d43416d650dee
+PODFILE CHECKSUM: 98f7bf5f345a7b1ee7ae4b411854e2bbf200c79e
 
 COCOAPODS: 1.8.4

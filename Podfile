@@ -8,6 +8,7 @@ target 'SavyStoryBoard' do
   # Pods for SavyStoryBoard
    pod 'Alamofire'
    pod 'GoogleSignIn'
+   pod 'JVFloatLabeledTextField'
 
   target 'SavyStoryBoardTests' do
     inherit! :search_paths

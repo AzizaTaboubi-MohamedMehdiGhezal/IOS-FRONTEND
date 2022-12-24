@@ -21,12 +21,11 @@ class ForgotPwViewController: UIViewController {
         let email = emailField.text ?? ""
         
         let forgotPwRequest = ForgotPwRequest(email: email)
-        if let data = try? JSONEncoder().encode(forgotPwRequest) {
-            if let dictionary = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] {
-                AF.request("\(Constants.BASE_URL)user/forgotPassword", method: .post, parameters: dictionary, encoding: JSONEncoding.default).responseJSON { response in
-                    print(response.data)
-                }
-            }
+        AF.request("\(Constants.BASE_URL)user/forgotPassword", method: .post, parameters: forgotPwRequest.getDictionary(), encoding: JSONEncoding.default).responseJSON { response in
+            print(response.data)
+            let confirmationOTPVC = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmationOTPViewController") as! ConfirmationOTPViewController
+            confirmationOTPVC.email = email
+            self.navigationController?.pushViewController(confirmationOTPVC, animated: true)
         }
         
     }

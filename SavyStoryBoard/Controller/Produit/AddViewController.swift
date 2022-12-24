@@ -73,7 +73,7 @@ class AddViewController: UIViewController {
              UIAction(title: "tablette", handler: typeChosen),
              UIAction(title: "mobile", handler: typeChosen),
              UIAction(title: "tv", handler: typeChosen),
-             UIAction(title: "consol", handler: typeChosen),
+             UIAction(title: "console", handler: typeChosen),
              UIAction(title: "laptop", handler: typeChosen),
              UIAction(title: "desktop", handler: typeChosen),
              UIAction(title: "camera", handler: typeChosen),
@@ -171,7 +171,9 @@ class AddViewController: UIViewController {
         let annee = Int(ann.text ?? "0") ?? 0
         
         if (produit == nil) {
-            let addRequest = AddRequest(nom: nom ,marque: marque, prix: prix, type: typeTxt, description: description, boutique: boutique, annee: annee, etat: "Nouveau", city: cityTxt, promo: 30)
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            let userID = appDelegate?.user?.user._id ?? ""
+            let addRequest = AddRequest(userID: userID, nom: nom ,marque: marque, prix: prix, type: typeTxt, description: description, boutique: boutique, annee: annee, etat: "Occasion", city: cityTxt)
             AF.request("\(Constants.BASE_URL)produit/add_prod", method: .post, parameters: addRequest.getDictionary(), encoding: JSONEncoding.default).responseJSON { response in
                 guard let data = response.data else {return }
                 print(data)
@@ -187,6 +189,7 @@ class AddViewController: UIViewController {
     }
     
     public class AddRequest: Codable {
+        let userID: String
         let nom: String
         let marque: String
         let prix: Double
@@ -196,9 +199,9 @@ class AddViewController: UIViewController {
         let annee: Int
         let etat: String
         let city: String
-        let promo: Int
         
-        init(nom: String, marque: String, prix: Double, type: String, description: String, boutique: String, annee: Int, etat: String, city: String, promo: Int) {
+        init(userID: String, nom: String, marque: String, prix: Double, type: String, description: String, boutique: String, annee: Int, etat: String, city: String) {
+            self.userID = userID
             self.nom = nom
             self.marque = marque
             self.prix = prix
@@ -208,7 +211,6 @@ class AddViewController: UIViewController {
             self.annee = annee
             self.etat = etat
             self.city = city
-            self.promo = promo
         }
     }
     

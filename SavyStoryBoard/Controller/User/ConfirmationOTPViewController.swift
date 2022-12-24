@@ -12,6 +12,8 @@ class ConfirmationOTPViewController: UIViewController {
 
     @IBOutlet weak var code: UITextField!
     
+    var email: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,23 +23,26 @@ class ConfirmationOTPViewController: UIViewController {
     @IBAction func tapLogin(_ sender: Any) {
         let rest = code.text ?? ""
         
-        let forgotPwRequest = confirmOTPRequest(rest: rest)
-        if let data = try? JSONEncoder().encode(forgotPwRequest) {
-            if let dictionary = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] {
-                AF.request("\(Constants.BASE_URL)user/ConfirmationOtp", method: .post, parameters: dictionary, encoding: JSONEncoding.default).responseJSON { response in
-                    print(response.data)
-                }
+        let forgotPwRequest = confirmOTPRequest(otp: rest, email: email)
+        AF.request("\(Constants.BASE_URL)user/ConfirmationOtp1", method: .post, parameters: forgotPwRequest.getDictionary(), encoding: JSONEncoding.default).responseJSON { response in
+            print(response.data)
+            if (response.response?.statusCode == 200) {
+                let resetPasswdVC = self.storyboard?.instantiateViewController(withIdentifier: "resetPasswdVC") as! ResetPasswordViewController
+                resetPasswdVC.otp = rest
+                resetPasswdVC.email = self.email
+                self.navigationController?.pushViewController(resetPasswdVC, animated: true)
             }
         }
-        
+
     }
     
     public class confirmOTPRequest: Codable {
-        let rest: String
+        let otp: String
+        let email: String
         
-    
-        public init(rest: String) {
-            self.rest = rest
+        init(otp: String, email: String) {
+            self.otp = otp
+            self.email = email
         }
     }
 

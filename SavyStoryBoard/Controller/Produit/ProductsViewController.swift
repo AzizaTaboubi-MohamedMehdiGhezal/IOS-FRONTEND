@@ -91,7 +91,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
         let product = products[indexPath.row]
         customCell.nomP.text = product.nom
         customCell.prixP.text = "\(String(product.prix)) TND"
-        customCell.boutiqueLbl.text = product.boutique
+        customCell.boutiqueLbl.text = product.marque
         if let promo = product.promo {
             customCell.promoLbl.isHidden = false
             customCell.promoLbl.text = "-\(promo)%"
