@@ -255,7 +255,7 @@
                                 <rect key="frame" x="0.0" y="92" width="390" height="267"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="krichenmarwen@gmail.com" borderStyle="roundedRect" placeholder="E-Mail" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mtE-cx-S3g">
+                            <textField contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="medmehdi.ghezal@gmail.com" borderStyle="roundedRect" placeholder="E-Mail" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mtE-cx-S3g">
                                 <rect key="frame" x="57" y="362" width="279" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -643,6 +643,7 @@
                                             <outlet property="boutiqueLbl" destination="yy8-rf-0Tj" id="PVl-Pd-Qli"/>
                                             <outlet property="nomP" destination="XEH-3I-X4u" id="Igs-yH-ErU"/>
                                             <outlet property="prixP" destination="obQ-Qk-rmW" id="iin-92-JdL"/>
+                                            <outlet property="productImgView" destination="vVt-h9-88f" id="gUe-J7-323"/>
                                             <outlet property="promoLbl" destination="nOX-3T-GFj" id="N5B-uF-DQC"/>
                                         </connections>
                                     </tableViewCell>
@@ -765,87 +766,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="unn-YE-9rQ">
-                                <rect key="frame" x="51" y="295" width="92" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="Fcq-qL-wcU">
-                                    <children>
-                                        <command title="Item 1" id="Yk2-04-zTu"/>
-                                        <command title="Item 2" id="SZ2-YE-oE1"/>
-                                    </children>
-                                </menu>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="MODEL">
-                                            <attributes>
-                                                <color key="NSColor" systemColor="systemGreenColor"/>
-                                                <font key="NSFont" metaFont="system" size="20"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1N-C1-9Kg">
-                                <rect key="frame" x="236" y="295" width="93" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="dKR-IT-18a">
-                                    <children>
-                                        <command title="Item 1" id="Cbj-VG-NgR"/>
-                                        <command title="Item 2" id="JOL-ye-gpz"/>
-                                    </children>
-                                </menu>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="BRANDS">
-                                            <attributes>
-                                                <color key="NSColor" systemColor="systemGreenColor"/>
-                                                <font key="NSFont" metaFont="system" size="20"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xhh-Fz-FKv">
-                                <rect key="frame" x="51" y="404" width="92" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="Gxe-e9-Hd0">
-                                    <children>
-                                        <command title="Item 1" id="rtc-ze-mbg"/>
-                                        <command title="Item 2" id="Voy-TW-DgI"/>
-                                    </children>
-                                </menu>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="YEAR">
-                                            <attributes>
-                                                <color key="NSColor" systemColor="systemGreenColor"/>
-                                                <font key="NSFont" metaFont="system" size="20"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5O-aM-qAe">
-                                <rect key="frame" x="236" y="404" width="93" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="89A-1v-lmR">
-                                    <children>
-                                        <command title="Item 1" id="b5V-7i-LIC"/>
-                                        <command title="Item 2" id="oSF-rS-i0J"/>
-                                    </children>
-                                </menu>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="CITY">
-                                            <attributes>
-                                                <color key="NSColor" systemColor="systemGreenColor"/>
-                                                <font key="NSFont" metaFont="system" size="20"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PRICE :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fN-o6-MRW">
                                 <rect key="frame" x="35" y="516" width="73" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -895,18 +815,74 @@
                                     <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3aI-1n-Yn7">
+                                <rect key="frame" x="51" y="296" width="92" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <menu key="menu" id="6yi-wE-mOR">
+                                    <children>
+                                        <command title="Item 1" id="ODb-Bk-3iJ"/>
+                                        <command title="Item 2" id="4bY-ni-uYC"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UuI-ob-tra">
+                                <rect key="frame" x="236" y="295" width="93" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <menu key="menu" id="3VS-id-NK1">
+                                    <children>
+                                        <command title="Item 1" id="olC-0h-sbc"/>
+                                        <command title="Item 2" id="mRW-97-6bP"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-94-hWy">
+                                <rect key="frame" x="51" y="387" width="92" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <menu key="menu" id="sXL-Wu-7q2">
+                                    <children>
+                                        <command title="Item 1" id="Ta3-Fa-rWe"/>
+                                        <command title="Item 2" id="pdQ-P6-neb"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nKL-rx-RYf">
+                                <rect key="frame" x="236" y="386" width="93" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <menu key="menu" id="lPa-5O-kbD">
+                                    <children>
+                                        <command title="Item 1" id="Tab-bm-R9h"/>
+                                        <command title="Item 2" id="qL0-XC-jM1"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0cu-9X-AWt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Used" id="Pyj-k1-wUq"/>
                     <connections>
-                        <outlet property="annee" destination="Xhh-Fz-FKv" id="DiK-AX-M3G"/>
-                        <outlet property="city" destination="h5O-aM-qAe" id="Vdl-sU-mtV"/>
-                        <outlet property="nom" destination="q1N-C1-9Kg" id="92g-2m-gRK"/>
+                        <outlet property="annee" destination="3fD-94-hWy" id="8aG-CI-Kkk"/>
+                        <outlet property="brand" destination="UuI-ob-tra" id="z4q-1b-7jI"/>
+                        <outlet property="city" destination="nKL-rx-RYf" id="H3c-bj-oGV"/>
                         <outlet property="price" destination="Bty-bz-Jnl" id="kTz-g9-6R8"/>
                         <outlet property="slider" destination="1Vk-5Y-vo7" id="VjM-Yj-ye0"/>
-                        <outlet property="type" destination="unn-YE-9rQ" id="pBL-jg-tKA"/>
+                        <outlet property="type" destination="3aI-1n-Yn7" id="sRf-pT-2D0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5t-Jo-Lf0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1188,7 +1164,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DhD-Zv-z57">
-                                        <rect key="frame" x="0.0" y="170" width="350" height="562"/>
+                                        <rect key="frame" x="0.0" y="170" width="350" height="640.33333333333337"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuQ-q0-RIe">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="34.333333333333336"/>
@@ -1198,6 +1174,12 @@
                                                     <action selector="editImageTap:" destination="MhB-vn-iSh" eventType="touchUpInside" id="Rfb-R5-YgC"/>
                                                 </connections>
                                             </button>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cX8-hU-eJh">
+                                                <rect key="frame" x="0.0" y="39.333333333333314" width="350" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m38-e5-zuM" customClass="JVFloatLabeledTextField">
                                                 <rect key="frame" x="0.0" y="44.333333333333314" width="350" height="49.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -1209,7 +1191,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Marque" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8bt-JG-NPg" customClass="JVFloatLabeledTextField">
-                                                <rect key="frame" x="0.0" y="104" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="104.00000000000001" width="350" height="49.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1219,7 +1201,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVq-nn-7r9" customClass="JVFloatLabeledTextField">
-                                                <rect key="frame" x="0.0" y="148" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="163.66666666666669" width="350" height="49.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1229,13 +1211,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of product :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8az-FK-E8r">
-                                                <rect key="frame" x="0.0" y="192" width="350" height="18"/>
+                                                <rect key="frame" x="0.0" y="223.33333333333331" width="350" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uai-UR-CeS">
-                                                <rect key="frame" x="0.0" y="220" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="251.33333333333337" width="350" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <menu key="menu" id="v3K-zX-P21">
                                                     <children>
@@ -1248,7 +1230,7 @@
                                                 </state>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spe-e6-MXS" customClass="JVFloatLabeledTextField">
-                                                <rect key="frame" x="0.0" y="264" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="295.33333333333337" width="350" height="49.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1258,13 +1240,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbt-s7-Epz">
-                                                <rect key="frame" x="0.0" y="308" width="350" height="18"/>
+                                                <rect key="frame" x="0.0" y="355" width="350" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cG3-Ff-VTn">
-                                                <rect key="frame" x="0.0" y="336" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="383" width="350" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <menu key="menu" id="u7Q-PU-4oa">
                                                     <children>
@@ -1277,7 +1259,7 @@
                                                 </state>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWZ-Pr-GEz" customClass="JVFloatLabeledTextField">
-                                                <rect key="frame" x="0.0" y="380" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="427" width="350" height="49.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1287,7 +1269,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nfo-xP-0G4">
-                                                <rect key="frame" x="0.0" y="424" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="486.66666666666663" width="350" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <menu key="menu" id="vfo-ko-fXC">
                                                     <children>
@@ -1300,7 +1282,7 @@
                                                 </state>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Shop" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UA2-fa-ax6" customClass="JVFloatLabeledTextField">
-                                                <rect key="frame" x="0.0" y="468" width="350" height="34"/>
+                                                <rect key="frame" x="0.0" y="530.66666666666663" width="350" height="49.666666666666629"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1310,7 +1292,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLC-qq-ssf">
-                                                <rect key="frame" x="0.0" y="512" width="350" height="50"/>
+                                                <rect key="frame" x="0.0" y="590.33333333333337" width="350" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="1F0-fc-jUx"/>
                                                 </constraints>
@@ -1355,11 +1337,12 @@
                         <outlet property="bou" destination="UA2-fa-ax6" id="tIf-oK-2QT"/>
                         <outlet property="city" destination="cG3-Ff-VTn" id="qC5-dd-65G"/>
                         <outlet property="desc" destination="spe-e6-MXS" id="Bny-qG-auX"/>
+                        <outlet property="errorLbl" destination="cX8-hU-eJh" id="lI6-v7-Zjb"/>
                         <outlet property="etat" destination="Nfo-xP-0G4" id="83H-DD-oin"/>
                         <outlet property="mar" destination="8bt-JG-NPg" id="14r-QR-CHs"/>
                         <outlet property="nom" destination="m38-e5-zuM" id="nWB-IJ-76C"/>
                         <outlet property="prix" destination="RVq-nn-7r9" id="WuD-du-1gQ"/>
-                        <outlet property="type" destination="uai-UR-CeS" id="7Go-nv-aTh"/>
+                        <outlet property="type" destination="uai-UR-CeS" id="dQw-um-y3F"/>
                         <outlet property="userImgView" destination="OzJ-Lu-TXb" id="ipq-xj-PHQ"/>
                     </connections>
                 </viewController>
@@ -1451,6 +1434,7 @@
                                             <outlet property="boutiqueLbl" destination="yO9-Zd-Cgl" id="G05-Xj-PeL"/>
                                             <outlet property="nomP" destination="kGE-rd-QJ9" id="8BN-tk-I8o"/>
                                             <outlet property="prixP" destination="zcJ-fK-c6u" id="N8u-pB-v1w"/>
+                                            <outlet property="productImgView" destination="pig-fI-8rB" id="1H9-ft-Fqy"/>
                                             <outlet property="promoLbl" destination="WCL-5A-vxo" id="u0Z-cu-ubX"/>
                                         </connections>
                                     </tableViewCell>
@@ -1584,8 +1568,23 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="8bt-JG-NPg">
+            <size key="intrinsicContentSize" width="89.333333333333329" height="49.666666666666664"/>
+        </designable>
+        <designable name="IWZ-Pr-GEz">
+            <size key="intrinsicContentSize" width="63.666666666666664" height="49.666666666666664"/>
+        </designable>
+        <designable name="RVq-nn-7r9">
+            <size key="intrinsicContentSize" width="68.666666666666671" height="49.666666666666664"/>
+        </designable>
+        <designable name="UA2-fa-ax6">
+            <size key="intrinsicContentSize" width="70" height="49.666666666666664"/>
+        </designable>
         <designable name="m38-e5-zuM">
             <size key="intrinsicContentSize" width="141" height="49.666666666666664"/>
+        </designable>
+        <designable name="spe-e6-MXS">
+            <size key="intrinsicContentSize" width="120" height="49.666666666666664"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

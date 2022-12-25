@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class UsedProdViewController: UIViewController {
 
     
     @IBOutlet weak var type: UIButton!
-    @IBOutlet weak var nom: UIButton!
+    @IBOutlet weak var brand: UIButton!
     @IBOutlet weak var annee: UIButton!
     @IBOutlet weak var city: UIButton!
     
@@ -24,27 +25,53 @@ class UsedProdViewController: UIViewController {
     }
     
     private var typeTxt: String = ""
-    private var nomTxt: String = ""
+    private var brandTxt: String = ""
     private var anneeTxt: String = ""
     private var cityTxt: String = ""
-    
-    var produit: UserProductsViewController.Product?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         slider.maximumValue = 5000
         slider.minimumValue = 0
         
+        let brandChosen = { (action: UIAction) in
+            print(action.title)
+            self.brandTxt = action.title
+        }
+        
+        brand.menu = UIMenu(children: [
+            UIAction(title: "BRAND", state: .on, handler: brandChosen)
+            ]
+        )
+        
         let typeChosen = { (action: UIAction) in
             print(action.title)
             self.typeTxt = action.title
+            if (action.identifier.rawValue == "first") {
+                self.brand.menu = UIMenu(children: [
+                    UIAction(title: "BRAND", state: .on, handler: brandChosen),
+                    ]
+                )
+                self.brand.isEnabled = false
+            } else {
+                self.getBrands(type: action.title) { brands in
+                    var actions: [UIAction] = []
+                    actions.append(UIAction(title: "BRAND", state: .on, handler: brandChosen))
+                    for brand in brands {
+                        actions.append(UIAction(title: brand, handler: brandChosen))
+                    }
+                    self.brand.menu = UIMenu(children: actions)
+                    self.brand.isEnabled = true
+                }
+            }
         }
         type.menu = UIMenu(children: [
+            UIAction(title: "MODEL", identifier: UIAction.Identifier(rawValue: "first"), state: .on, handler: typeChosen),
              UIAction(title: "tablette", handler: typeChosen),
              UIAction(title: "mobile", handler: typeChosen),
              UIAction(title: "tv", handler: typeChosen),
-             UIAction(title: "consol", handler: typeChosen),
+             UIAction(title: "console", handler: typeChosen),
              UIAction(title: "laptop", handler: typeChosen),
              UIAction(title: "desktop", handler: typeChosen),
              UIAction(title: "camera", handler: typeChosen),
@@ -55,15 +82,6 @@ class UsedProdViewController: UIViewController {
              UIAction(title: "fridge", handler: typeChosen),
              UIAction(title: "other", handler: typeChosen)
            ])
-        type.menu?.children.forEach({ menuItem in
-            if let menuItem = menuItem as? UIAction {
-                if (menuItem.title == produit?.type) {
-                    menuItem.state = .on
-                } else {
-                    menuItem.state = .off
-                }
-            }
-        })
         
         let cityChosen = { (action: UIAction) in
             print(action.title)
@@ -96,16 +114,6 @@ class UsedProdViewController: UIViewController {
              UIAction(title: "Zaghouan", handler: cityChosen)
            ])
         
-        city.menu?.children.forEach({ menuItem in
-            if let menuItem = menuItem as? UIAction {
-                if (menuItem.title == produit?.city) {
-                    menuItem.state = .on
-                } else {
-                    menuItem.state = .off
-                }
-            }
-        })
-        
         let anneeChosen = { (action: UIAction) in
             print(action.title)
             self.anneeTxt = action.title
@@ -129,27 +137,25 @@ class UsedProdViewController: UIViewController {
              UIAction(title: "2007", handler: anneeChosen),
              UIAction(title: "2006", handler: anneeChosen)
            ])
-        annee.menu?.children.forEach({ menuItem in
-            if let menuItem = menuItem as? UIAction {
-                if (Int(menuItem.title) == produit?.annee) {
-                    menuItem.state = .on
-                } else {
-                    menuItem.state = .off
-                }
+    
+    }
+    
+    func getBrands(type: String, completion: @escaping ([String]) -> Void) {
+        AF.request("\(Constants.BASE_URL)produit/brands?type=\(type)", method: .get, encoding: JSONEncoding.default).responseDecodable(of: Brands.self) { response in
+            switch response.result {
+            case .success(let brands):
+                completion(brands.brands)
+            case .failure(let error):
+                print(error)
             }
-        })
-        
-        
-        typeTxt = produit?.type ?? ""
-        nomTxt = produit?.nom ?? ""
-//        anneeTxt = produit?.annee ?? ""
-        cityTxt = produit?.city ?? ""
-        
-        if (produit == nil) {
-            typeTxt = "tablette"
-            cityTxt = "Ariana"
         }
     }
+    
+    class Brands: Codable {
+        let brands: [String]
+    }
+    
+
     
 
     /*

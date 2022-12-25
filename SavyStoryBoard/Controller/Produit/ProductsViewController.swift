@@ -98,6 +98,19 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             customCell.promoLbl.isHidden = true
         }
+        if let image = product.image {
+            if (image != "") {
+                AF.request("\(Constants.BASE_URL)images/\(image)").responseData { (response) in
+                    switch response.result {
+                    case .success(let data):
+                        customCell.productImgView.image = UIImage(data: data)
+                    case .failure(let error):
+                        print(error)
+                        customCell.productImgView.image = UIImage(named: "audio")
+                    }
+                }
+            }
+        }
         return customCell
     }
 }

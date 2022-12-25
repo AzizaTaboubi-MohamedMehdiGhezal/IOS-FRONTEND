@@ -25,10 +25,12 @@ class AddViewController: UIViewController {
     @IBOutlet weak var type: UIButton!
     @IBOutlet weak var etat: UIButton!
     @IBOutlet weak var city: UIButton!
+    @IBOutlet weak var errorLbl: UILabel!
     
     private var typeTxt: String = ""
     private var etatTxt: String = ""
     private var cityTxt: String = ""
+    private var imageURL: URL?
     
     var imagePicker = UIImagePickerController()
 
@@ -120,6 +122,18 @@ class AddViewController: UIViewController {
         desc.text = produit?.description
         ann.text = String(produit?.annee ?? 0)
         
+        if (produit?.image ?? "") != "" {
+            AF.request("\(Constants.BASE_URL)images/\(produit?.image ?? "")").responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    self.userImgView.image = UIImage(data: data)
+                case .failure(let error):
+                    print(error)
+                    self.userImgView.image = UIImage(named: "iconUser")
+                }
+            }
+        }
+        
         
         let cityChosen = { (action: UIAction) in
             print(action.title)
@@ -168,27 +182,61 @@ class AddViewController: UIViewController {
     @IBAction func tapLogin(_ sender: Any) {
         let nom = nom .text ?? ""
         let marque = mar.text ?? ""
-        let prix = Double(prix.text!)!
+        let prix = prix.text ?? "0"
         let description = desc.text ?? ""
         let boutique = bou.text ?? ""
-        let annee = Int(ann.text ?? "0") ?? 0
+        let annee = ann.text ?? "0"
         
         if (produit == nil) {
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             let userID = appDelegate?.user?.user._id ?? ""
-            let addRequest = AddRequest(userID: userID, nom: nom ,marque: marque, prix: prix, type: typeTxt, description: description, boutique: boutique, annee: annee, etat: "Occasion", city: cityTxt)
-            AF.request("\(Constants.BASE_URL)produit/add_prod", method: .post, parameters: addRequest.getDictionary(), encoding: JSONEncoding.default).responseJSON { response in
-                guard let data = response.data else {return }
-                print(data)
+            
+            AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(Data(userID.utf8), withName: "userID")
+                multipartFormData.append(Data(nom.utf8), withName: "nom")
+                multipartFormData.append(Data(marque.utf8), withName: "marque")
+                multipartFormData.append(Data(prix.utf8), withName: "prix")
+                multipartFormData.append(Data(description.utf8), withName: "description")
+                multipartFormData.append(Data(boutique.utf8), withName: "boutique")
+                multipartFormData.append(Data(annee.utf8), withName: "annee")
+                multipartFormData.append(Data(self.typeTxt.utf8), withName: "type")
+                multipartFormData.append(Data(self.cityTxt.utf8), withName: "city")
+                multipartFormData.append(Data("Occasion".utf8), withName: "etat")
+                if let url = self.imageURL {
+                    multipartFormData.append(url, withName: "image")
+                }
+            }, to: "\(Constants.BASE_URL)produit/add_prod").responseJSON { response in
+                print(response)
+                if (response.response?.statusCode == 200) {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.errorLbl.isHidden = false
+                }
             }
         } else {
-            let updateRequest = UpdateRequest(_id: produit?._id ?? "", nom: nom ,marque: marque, prix: prix, type: typeTxt, description: description, boutique: boutique, annee: annee, etat: etatTxt, city: cityTxt)
-            AF.request("\(Constants.BASE_URL)produit/update_prod", method: .post, parameters: updateRequest.getDictionary(), encoding: JSONEncoding.default).responseJSON { response in
-                guard let data = response.data else {return }
-                print(data)
+            AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(Data((self.produit?._id ?? "").utf8), withName: "_id")
+                multipartFormData.append(Data(nom.utf8), withName: "nom")
+                multipartFormData.append(Data(marque.utf8), withName: "marque")
+                multipartFormData.append(Data(prix.utf8), withName: "prix")
+                multipartFormData.append(Data(description.utf8), withName: "description")
+                multipartFormData.append(Data(boutique.utf8), withName: "boutique")
+                multipartFormData.append(Data(annee.utf8), withName: "annee")
+                multipartFormData.append(Data(self.typeTxt.utf8), withName: "type")
+                multipartFormData.append(Data(self.cityTxt.utf8), withName: "city")
+                multipartFormData.append(Data("Occasion".utf8), withName: "etat")
+                if let url = self.imageURL {
+                    multipartFormData.append(url, withName: "image")
+                }
+            }, to: "\(Constants.BASE_URL)produit/update_prod").responseJSON { response in
+                print(response)
+                if (response.response?.statusCode == 200) {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.errorLbl.isHidden = false
+                }
             }
         }
-        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func editImageTap(_ sender: Any) {
@@ -201,63 +249,6 @@ class AddViewController: UIViewController {
 
             present(imagePicker, animated: true, completion: nil)
         }
-    }
-    
-    
-    public class AddRequest: Codable {
-        let userID: String
-        let nom: String
-        let marque: String
-        let prix: Double
-        let type: String
-        let description: String
-        let boutique: String
-        let annee: Int
-        let etat: String
-        let city: String
-        
-        init(userID: String, nom: String, marque: String, prix: Double, type: String, description: String, boutique: String, annee: Int, etat: String, city: String) {
-            self.userID = userID
-            self.nom = nom
-            self.marque = marque
-            self.prix = prix
-            self.type = type
-            self.description = description
-            self.boutique = boutique
-            self.annee = annee
-            self.etat = etat
-            self.city = city
-        }
-    }
-    
-    public class UpdateRequest: Codable {
-        let _id: String
-        let nom: String
-        let marque: String
-        let prix: Double
-        let type: String
-        let description: String
-        let boutique: String
-        let annee: Int
-        let etat: String
-        let city: String
-        
-        public init(_id: String, nom: String, marque: String, prix: Double, type: String, description: String, boutique: String, annee:Int ,etat: String, city: String) {
-            self._id = _id
-            self.nom = nom
-            self.marque = marque
-            self.prix = prix
-            self.type = type
-            self.description = description
-            self.boutique = boutique
-            self.annee = annee
-            self.etat = etat
-            self.city = city
-            
-            
-            
-        }
-        
     }
 
     
@@ -278,6 +269,7 @@ extension AddViewController: UINavigationControllerDelegate, UIImagePickerContro
         self.dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             userImgView.image = image
+            imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
           }
     }
     

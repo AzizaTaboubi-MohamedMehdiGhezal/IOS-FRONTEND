@@ -26,6 +26,7 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
         let type: String
         let city: String
         let etat: String
+        let image: String?
     }
     
     struct Products: Codable {
@@ -81,6 +82,20 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
         } else {
             customCell.promoLbl.isHidden = true
         }
+        if let image = product.image {
+            if (image != "") {
+                AF.request("\(Constants.BASE_URL)images/\(image)").responseData { (response) in
+                    switch response.result {
+                    case .success(let data):
+                        customCell.productImgView.image = UIImage(data: data)
+                    case .failure(let error):
+                        print(error)
+                        customCell.productImgView.image = UIImage(named: "audio")
+                    }
+                }
+            }
+        }
+        
         return customCell
     }
     
