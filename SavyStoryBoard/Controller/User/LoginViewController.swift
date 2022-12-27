@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import LocalAuthentication
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -79,6 +80,7 @@ class LoginViewController: UIViewController {
     @IBAction func tapLogin(_ sender: Any) {
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
+        
         let loginRequest = LoginRequest(email: email, password: password)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if let data = try? JSONEncoder().encode(loginRequest) {
@@ -91,6 +93,7 @@ class LoginViewController: UIViewController {
                         if (code == 200) {
                             //3adih
                             appDelegate.user = loginResponse
+                            MBProgressHUDUtils.hideMBProgressHUB(vc: self)
                             self.performSegue(withIdentifier: "loginSegue", sender: self)
                         } else {
                             //mat3adihouch

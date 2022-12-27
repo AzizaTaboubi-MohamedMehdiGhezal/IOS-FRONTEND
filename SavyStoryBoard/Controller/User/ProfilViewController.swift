@@ -9,6 +9,7 @@ import UIKit
 
 class ProfilViewController: UIViewController {
 
+    @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var themeLabel: UILabel!
     @IBOutlet weak var name: UILabel!
    
@@ -53,6 +54,13 @@ class ProfilViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(didTapSignout))
         
        // name.text = products[indexPath.row].nom
+        
+        myImage.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        myImage.layer.shadowOffset = CGSize(width: 6.0, height: 6.0)
+        myImage.layer.shadowOpacity = 1.0
+        myImage.layer.shadowRadius = 2.0
+        myImage.layer.masksToBounds = false
+        myImage.layer.cornerRadius = 4.0
         
     }
     override func didReceiveMemoryWarning() {

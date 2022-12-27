@@ -24,6 +24,7 @@
 		82AFF6CA29358F9500338B36 /* UserProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AFF6C929358F9500338B36 /* UserProductsViewController.swift */; };
 		82B0824929295326002F8580 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0824829295326002F8580 /* SignUpViewController.swift */; };
 		82B0824B292A442C002F8580 /* ForgotPwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0824A292A442C002F8580 /* ForgotPwViewController.swift */; };
+		82B4F4A22958DA6C00E18F96 /* MBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B4F4A12958DA6C00E18F96 /* MBProgressHUD.swift */; };
 		82E8B9B4293E2CF00019D0CC /* UsedProdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E8B9B3293E2CF00019D0CC /* UsedProdViewController.swift */; };
 		82F23B122922A82400B49B0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F23B112922A82400B49B0C /* AppDelegate.swift */; };
 		82F23B142922A82400B49B0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F23B132922A82400B49B0C /* SceneDelegate.swift */; };
@@ -83,6 +84,7 @@
 		82AFF6C929358F9500338B36 /* UserProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProductsViewController.swift; sourceTree = "<group>"; };
 		82B0824829295326002F8580 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		82B0824A292A442C002F8580 /* ForgotPwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPwViewController.swift; sourceTree = "<group>"; };
+		82B4F4A12958DA6C00E18F96 /* MBProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUD.swift; sourceTree = "<group>"; };
 		82E8B9B3293E2CF00019D0CC /* UsedProdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedProdViewController.swift; sourceTree = "<group>"; };
 		82F23B0E2922A82400B49B0C /* SavyStoryBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SavyStoryBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F23B112922A82400B49B0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				82F23B222922A82600B49B0C /* Info.plist */,
 				82F23B1A2922A82400B49B0C /* SavyStoryBoard.xcdatamodeld */,
 				8299C97A29562A5A00D9AE30 /* Codable+Extension.swift */,
+				82B4F4A12958DA6C00E18F96 /* MBProgressHUD.swift */,
 			);
 			path = SavyStoryBoard;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				826E422029356CDC00319E86 /* UpdateViewController.swift in Sources */,
 				82AFF6CA29358F9500338B36 /* UserProductsViewController.swift in Sources */,
 				826E421B29351F4B00319E86 /* ConfirmationOTPViewController.swift in Sources */,
+				82B4F4A22958DA6C00E18F96 /* MBProgressHUD.swift in Sources */,
 				82E8B9B4293E2CF00019D0CC /* UsedProdViewController.swift in Sources */,
 				821D4ACE29573B4D00A5F983 /* HomeViewController.swift in Sources */,
 				8287512D293BAB7200B7523B /* CustomCell.swift in Sources */,

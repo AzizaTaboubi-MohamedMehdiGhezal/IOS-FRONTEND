@@ -15,11 +15,13 @@ PODS:
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.3.0)
   - JVFloatLabeledTextField (1.2.2)
+  - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - GoogleSignIn
   - JVFloatLabeledTextField
+  - MBProgressHUD
 
 SPEC REPOS:
   trunk:
@@ -29,6 +31,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - JVFloatLabeledTextField
+    - MBProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -37,7 +40,8 @@ SPEC CHECKSUMS:
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
   JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 98f7bf5f345a7b1ee7ae4b411854e2bbf200c79e
+PODFILE CHECKSUM: a32c828b416bf4d1f3d40cb183459e86182b7b44
 
 COCOAPODS: 1.8.4

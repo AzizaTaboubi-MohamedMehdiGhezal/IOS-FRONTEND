@@ -15,4 +15,5 @@ class CustomCell : UITableViewCell{
     @IBOutlet weak var prixP: UILabel!
     @IBOutlet weak var boutiqueLbl: UILabel!
     @IBOutlet weak var promoLbl: UILabel!
+    @IBOutlet weak var typeLbl: UILabel!
 }

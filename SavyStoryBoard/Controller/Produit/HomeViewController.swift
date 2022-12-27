@@ -14,6 +14,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var allView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        newsView.clipsToBounds = true
+        newsView.layer.cornerRadius = 7
+        promoView.clipsToBounds = true
+        promoView.layer.cornerRadius = 7
+        allView.clipsToBounds = true
+        allView.layer.cornerRadius = 7
+        
         let allTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(navigateToAll))
         allView.addGestureRecognizer(allTapRecognizer)
         let newsTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(navigateToNews))

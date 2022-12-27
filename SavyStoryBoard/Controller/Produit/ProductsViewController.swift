@@ -8,10 +8,12 @@
 import UIKit
 import Alamofire
 
-class ProductsViewController: UIViewController {
+class ProductsViewController: UIViewController, UISearchResultsUpdating {
+    
     @IBOutlet weak var tableView: UITableView!
     
     var products: [UserProductsViewController.Product] = []
+    var filteredProducts: [UserProductsViewController.Product] = []
     var filterType: FilterType = .ALL
     
     enum FilterType {
@@ -26,6 +28,19 @@ class ProductsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.delegate = self
+        // Place the search bar in the navigation bar.
+        navigationItem.searchController = searchController
+        
+        // Make the search bar always visible.
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
+        definesPresentationContext = true
+    
         switch filterType {
         case .NEW:
             self.title = "New products"
@@ -54,6 +69,8 @@ class ProductsViewController: UIViewController {
                 let code = response.response?.statusCode
                 if (code == 200) {
                     self.products = prodResponse.Products
+                    self.filteredProducts.removeAll()
+                    self.filteredProducts.append(contentsOf: self.products)
                     self.tableView.reloadData()
                 } else {
                     //mat3adihouch
@@ -83,12 +100,12 @@ class ProductsViewController: UIViewController {
 
 extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        products.count
+        filteredProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let customCell = tableView.dequeueReusableCell(withIdentifier: "myCell") as! CustomCell
-        let product = products[indexPath.row]
+        let product = filteredProducts[indexPath.row]
         customCell.nomP.text = product.nom
         customCell.prixP.text = "\(String(product.prix)) TND"
         customCell.boutiqueLbl.text = product.marque
@@ -113,4 +130,16 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return customCell
     }
+}
+
+extension ProductsViewController: UISearchControllerDelegate, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        let strippedString = searchController.searchBar.text ?? ""
+        filteredProducts.removeAll()
+        filteredProducts.append(contentsOf: self.products.filter({ product in
+            product.nom.lowercased().contains(strippedString.lowercased())
+        }))
+        tableView.reloadData()
+    }
+    
 }

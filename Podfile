@@ -9,6 +9,7 @@ target 'SavyStoryBoard' do
    pod 'Alamofire'
    pod 'GoogleSignIn'
    pod 'JVFloatLabeledTextField'
+   pod 'MBProgressHUD'
 
   target 'SavyStoryBoardTests' do
     inherit! :search_paths

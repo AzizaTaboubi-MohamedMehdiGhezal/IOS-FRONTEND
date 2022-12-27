@@ -231,6 +231,7 @@ class AddViewController: UIViewController {
             }, to: "\(Constants.BASE_URL)produit/update_prod").responseJSON { response in
                 print(response)
                 if (response.response?.statusCode == 200) {
+                    MBProgressHUDUtils.hideMBProgressHUB(vc: self)
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     self.errorLbl.isHidden = false
@@ -274,6 +275,6 @@ extension AddViewController: UINavigationControllerDelegate, UIImagePickerContro
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("x")
+        self.dismiss(animated: true, completion: nil)
     }
 }

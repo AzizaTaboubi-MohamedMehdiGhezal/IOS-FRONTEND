@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import MBProgressHUD
 
 class UserProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -36,6 +37,7 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
     //var arrProd = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        MBProgressHUDUtils.mbProgressHUB(vc: self, text: "Loading ...")
         
 //        tableView.register(UINib(nibName: "myCell", bundle: nil), forCellReuseIdentifier: "myCell")
         
@@ -52,6 +54,7 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
                 let code = response.response?.statusCode
                 if (code == 200) {
                     self.products = prodResponse.Products
+                    MBProgressHUDUtils.hideMBProgressHUB(vc: self)
                     self.tableView.reloadData()
                 } else {
                     //mat3adihouch
@@ -76,6 +79,8 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
         customCell.nomP.text = product.nom
         customCell.prixP.text = "\(String(product.prix)) TND"
         customCell.boutiqueLbl.text = product.marque
+        customCell.typeLbl.text = product.type
+        
         if let promo = product.promo {
             customCell.promoLbl.isHidden = false
             customCell.promoLbl.text = "-\(promo)%"
@@ -160,4 +165,3 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
 
 
 }
-

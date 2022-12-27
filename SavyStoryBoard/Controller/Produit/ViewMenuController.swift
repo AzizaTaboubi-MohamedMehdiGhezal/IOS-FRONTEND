@@ -11,10 +11,17 @@ class ViewMenuController: UIViewController{
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var icon: IconCollectionViewCell!
     var arrIcons = ["tv","laptop","desktop","phone1","tablet","camera","console","mouse","audio","keyborad","smartwatch","other"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        icon.layer.borderWidth = 5
+//        icon.layer.borderColor = UIColor(red: 0.0, green: 0.8, blue: 0.4, alpha: 0.8).cgColor
+//        icon.layer.cornerRadius = 0.0
+//        icon.layer.masksToBounds = true
+
         //        collectionView.delegate = self
         //        collectionView.dataSource = self
         
@@ -38,6 +45,12 @@ class ViewMenuController: UIViewController{
         cell.imgicon.image = UIImage(named: arrIcons[indexPath.row])
         cell.labelicon.text = arrIcons[indexPath.row]
         
+        if cell.isSelected{
+            
+        }else{
+            
+        }
+        
         //cell.imageDetail.tag = indexPath.row
         //cell.imageDetail.addTarget(self, action: #selector(viewdetail), for: .touchUpInside)
 //        @objc func viewdetail(sender:UIButton){
@@ -49,9 +62,21 @@ class ViewMenuController: UIViewController{
     }
         
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderColor = CGColor(red: 0.0, green: 0.8, blue: 0.4, alpha: 0.4)
+        cell?.layer.borderWidth = 1
+        cell?.isSelected = true
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: "IconDetailViewController") as? IconDetailViewController
         vc?.name = arrIcons[indexPath.row]
         self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    
+        func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+            let cell = collectionView.cellForItem(at: indexPath)
+            cell?.layer.borderColor = CGColor(red: 0.0, green: 0.8, blue: 0.4, alpha: 0.4)
+            cell?.layer.borderWidth = 1
+            cell?.isSelected = false
         }
     
 //    struct Icons {
