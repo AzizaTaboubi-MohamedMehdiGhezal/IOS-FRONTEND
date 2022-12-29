@@ -1,13 +1,15 @@
 import express from 'express';
 import mongoose from 'mongoose'; //Importer Mongoose
 import user from './Routes/user.js';
+import produit from './Routes/produit.js';
 import passport from "passport";
 import pkg from 'body-parser';
 const { json } = pkg;
 
 
 const app = express();
-const port = process.env.PORT || 9090;
+app.use('/images' ,express.static('uploads'))
+const port = process.env.PORT || 9092;
 const databasename = 'MiniProjet';
 
 
@@ -17,7 +19,6 @@ const databasename = 'MiniProjet';
 app.use(passport.initialize());
 
 app.use(json());
-app.use("/", user);
 
 /*app.listen(port, async () => {
   await connect();
@@ -46,6 +47,7 @@ mongoose
 
    app.use(express.json());
    app.use('/user', user);
+   app.use('/produit', produit);
    
    app.listen(port, ()=> {
     console.log(`server running at http://localhost:${port}`);
