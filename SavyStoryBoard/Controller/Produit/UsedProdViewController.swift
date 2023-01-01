@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 class UsedProdViewController: UIViewController {
-
+    
     
     @IBOutlet weak var type: UIButton!
     @IBOutlet weak var brand: UIButton!
@@ -22,13 +22,16 @@ class UsedProdViewController: UIViewController {
     
     @IBAction func changeValue(_ sender: Any) {
         price.text = "\(String(Int(slider.value))) TND"
+        priceVal = Int((sender as? UISlider)?.value ?? 0)
     }
     
     private var typeTxt: String = ""
     private var brandTxt: String = ""
-    private var anneeTxt: String = ""
-    private var cityTxt: String = ""
-        
+    private var anneeTxt: String? = ""
+    private var cityTxt: String? = ""
+    
+    private var priceVal: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +45,7 @@ class UsedProdViewController: UIViewController {
         
         brand.menu = UIMenu(children: [
             UIAction(title: "BRAND", state: .on, handler: brandChosen)
-            ]
+        ]
         )
         
         let typeChosen = { (action: UIAction) in
@@ -51,7 +54,7 @@ class UsedProdViewController: UIViewController {
             if (action.identifier.rawValue == "first") {
                 self.brand.menu = UIMenu(children: [
                     UIAction(title: "BRAND", state: .on, handler: brandChosen),
-                    ]
+                ]
                 )
                 self.brand.isEnabled = false
             } else {
@@ -68,76 +71,83 @@ class UsedProdViewController: UIViewController {
         }
         type.menu = UIMenu(children: [
             UIAction(title: "MODEL", identifier: UIAction.Identifier(rawValue: "first"), state: .on, handler: typeChosen),
-             UIAction(title: "tablette", handler: typeChosen),
-             UIAction(title: "mobile", handler: typeChosen),
-             UIAction(title: "tv", handler: typeChosen),
-             UIAction(title: "console", handler: typeChosen),
-             UIAction(title: "laptop", handler: typeChosen),
-             UIAction(title: "desktop", handler: typeChosen),
-             UIAction(title: "camera", handler: typeChosen),
-             UIAction(title: "mouse", handler: typeChosen),
-             UIAction(title: "audio", handler: typeChosen),
-             UIAction(title: "keyboard", handler: typeChosen),
-             UIAction(title: "smartwatch", handler: typeChosen),
-             UIAction(title: "fridge", handler: typeChosen),
-             UIAction(title: "other", handler: typeChosen)
-           ])
+            UIAction(title: "tablette", handler: typeChosen),
+            UIAction(title: "mobile", handler: typeChosen),
+            UIAction(title: "tv", handler: typeChosen),
+            UIAction(title: "console", handler: typeChosen),
+            UIAction(title: "laptop", handler: typeChosen),
+            UIAction(title: "desktop", handler: typeChosen),
+            UIAction(title: "camera", handler: typeChosen),
+            UIAction(title: "mouse", handler: typeChosen),
+            UIAction(title: "audio", handler: typeChosen),
+            UIAction(title: "keyboard", handler: typeChosen),
+            UIAction(title: "smartwatch", handler: typeChosen),
+            UIAction(title: "fridge", handler: typeChosen),
+            UIAction(title: "other", handler: typeChosen)
+        ])
         
         let cityChosen = { (action: UIAction) in
             print(action.title)
             self.cityTxt = action.title
         }
+        
         city.menu = UIMenu(children: [
-             UIAction(title: "Ariana", handler: cityChosen),
-             UIAction(title: "Beja", handler: cityChosen),
-             UIAction(title: "Ben Arous", handler: cityChosen),
-             UIAction(title: "Bizert", handler: cityChosen),
-             UIAction(title: "Gabes", handler: cityChosen),
-             UIAction(title: "Gafsa", handler: cityChosen),
-             UIAction(title: "Jendouba", handler: cityChosen),
-             UIAction(title: "Kairaouan", handler: cityChosen),
-             UIAction(title: "Kasserine", handler: cityChosen),
-             UIAction(title: "Kebili", handler: cityChosen),
-             UIAction(title: "Kef", handler: cityChosen),
-             UIAction(title: "Mahdia", handler: cityChosen),
-             UIAction(title: "Manouba", handler: cityChosen),
-             UIAction(title: "Medenine", handler: cityChosen),
-             UIAction(title: "Monastir", handler: cityChosen),
-             UIAction(title: "Nabeul", handler: cityChosen),
-             UIAction(title: "Sfax", handler: cityChosen),
-             UIAction(title: "Sidi Bouzid", handler: cityChosen),
-             UIAction(title: "Siliana", handler: cityChosen),
-             UIAction(title: "Sousse", handler: cityChosen),
-             UIAction(title: "Tataouine", handler: cityChosen),
-             UIAction(title: "Tozeur", handler: cityChosen),
-             UIAction(title: "Tunis", handler: cityChosen),
-             UIAction(title: "Zaghouan", handler: cityChosen)
-           ])
+            UIAction(title: "CITY"){_ in
+                self.cityTxt = nil
+            },
+            UIAction(title: "Ariana", handler: cityChosen),
+            UIAction(title: "Beja", handler: cityChosen),
+            UIAction(title: "Ben Arous", handler: cityChosen),
+            UIAction(title: "Bizert", handler: cityChosen),
+            UIAction(title: "Gabes", handler: cityChosen),
+            UIAction(title: "Gafsa", handler: cityChosen),
+            UIAction(title: "Jendouba", handler: cityChosen),
+            UIAction(title: "Kairaouan", handler: cityChosen),
+            UIAction(title: "Kasserine", handler: cityChosen),
+            UIAction(title: "Kebili", handler: cityChosen),
+            UIAction(title: "Kef", handler: cityChosen),
+            UIAction(title: "Mahdia", handler: cityChosen),
+            UIAction(title: "Manouba", handler: cityChosen),
+            UIAction(title: "Medenine", handler: cityChosen),
+            UIAction(title: "Monastir", handler: cityChosen),
+            UIAction(title: "Nabeul", handler: cityChosen),
+            UIAction(title: "Sfax", handler: cityChosen),
+            UIAction(title: "Sidi Bouzid", handler: cityChosen),
+            UIAction(title: "Siliana", handler: cityChosen),
+            UIAction(title: "Sousse", handler: cityChosen),
+            UIAction(title: "Tataouine", handler: cityChosen),
+            UIAction(title: "Tozeur", handler: cityChosen),
+            UIAction(title: "Tunis", handler: cityChosen),
+            UIAction(title: "Zaghouan", handler: cityChosen)
+        ])
         
         let anneeChosen = { (action: UIAction) in
             print(action.title)
             self.anneeTxt = action.title
         }
         annee.menu = UIMenu(children: [
-             UIAction(title: "2022", handler: anneeChosen),
-             UIAction(title: "2021", handler: anneeChosen),
-             UIAction(title: "2020", handler: anneeChosen),
-             UIAction(title: "2019", handler: anneeChosen),
-             UIAction(title: "2018", handler: anneeChosen),
-             UIAction(title: "2017", handler: anneeChosen),
-             UIAction(title: "2016", handler: anneeChosen),
-             UIAction(title: "2015", handler: anneeChosen),
-             UIAction(title: "2014", handler: anneeChosen),
-             UIAction(title: "2013", handler: anneeChosen),
-             UIAction(title: "2012", handler: anneeChosen),
-             UIAction(title: "2011", handler: anneeChosen),
-             UIAction(title: "2010", handler: anneeChosen),
-             UIAction(title: "2009", handler: anneeChosen),
-             UIAction(title: "2008", handler: anneeChosen),
-             UIAction(title: "2007", handler: anneeChosen),
-             UIAction(title: "2006", handler: anneeChosen)
-           ])
-    
+            UIAction(title: "YEAR"){_ in
+                self.cityTxt = nil
+            },
+            UIAction(title: "2022", handler: anneeChosen),
+            UIAction(title: "2021", handler: anneeChosen),
+            UIAction(title: "2020", handler: anneeChosen),
+            UIAction(title: "2019", handler: anneeChosen),
+            UIAction(title: "2018", handler: anneeChosen),
+            UIAction(title: "2017", handler: anneeChosen),
+            UIAction(title: "2016", handler: anneeChosen),
+            UIAction(title: "2015", handler: anneeChosen),
+            UIAction(title: "2014", handler: anneeChosen),
+            UIAction(title: "2013", handler: anneeChosen),
+            UIAction(title: "2012", handler: anneeChosen),
+            UIAction(title: "2011", handler: anneeChosen),
+            UIAction(title: "2010", handler: anneeChosen),
+            UIAction(title: "2009", handler: anneeChosen),
+            UIAction(title: "2008", handler: anneeChosen),
+            UIAction(title: "2007", handler: anneeChosen),
+            UIAction(title: "2006", handler: anneeChosen)
+        ])
+        
     }
     
     func getBrands(type: String, completion: @escaping ([String]) -> Void) {
@@ -151,21 +161,35 @@ class UsedProdViewController: UIViewController {
         }
     }
     
-    class Brands: Codable {
-        let brands: [String]
-    }
     
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func searchBtn(_ sender: Any) {
+        //let usedProdRequest = UsedProdViewController()
+        AF.request("\(Constants.BASE_URL)produit/searchUserProd?type=\(typeTxt)&marque=\(brandTxt)&annee=\(anneeTxt ?? "")&city=\(cityTxt ?? "")&prix=\(priceVal)", method: .get, encoding: JSONEncoding.default).responseDecodable(of: [Product].self) { response in
+            switch response.result {
+            case .success(let usedProdResponse):
+                print(usedProdResponse)
+                let code = response.response?.statusCode
+                if (code == 200) {
+                    let productsVC = self.storyboard?.instantiateViewController(withIdentifier: "productsVC") as! ProductsViewController
+                    productsVC.products = usedProdResponse
+                    productsVC.title = "Used products"
+                    self.navigationController?.pushViewController(productsVC, animated: true)
+                }
+            case .failure(let error):
+                print(error)
+                }
+//            self.navigationController?.pushViewController(confirmationOTPVC, animated: true)
+                /*
+                 // MARK: - Navigation
+                 
+                 // In a storyboard-based application, you will often want to do a little preparation before navigation
+                 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                 // Get the new view controller using segue.destination.
+                 // Pass the selected object to the new view controller.
+                 }
+                 */
+                
+            }
+            
+        }
     }
-    */
-
-}

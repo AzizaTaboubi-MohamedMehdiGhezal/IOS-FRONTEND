@@ -29,16 +29,7 @@ class ForgotPwViewController: UIViewController {
         }
         
     }
-    
-    public class ForgotPwRequest: Codable {
-        let email: String
-        
-    
-        public init(email: String) {
-            self.email = email
-        }
-    }
-    
+
 
     /*
     // MARK: - Navigation

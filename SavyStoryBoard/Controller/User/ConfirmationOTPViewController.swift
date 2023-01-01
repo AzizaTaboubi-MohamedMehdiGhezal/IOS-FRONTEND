@@ -35,16 +35,7 @@ class ConfirmationOTPViewController: UIViewController {
         }
 
     }
-    
-    public class confirmOTPRequest: Codable {
-        let otp: String
-        let email: String
-        
-        init(otp: String, email: String) {
-            self.otp = otp
-            self.email = email
-        }
-    }
+
 
     /*
     // MARK: - Navigation

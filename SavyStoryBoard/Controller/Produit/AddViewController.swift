@@ -34,7 +34,7 @@ class AddViewController: UIViewController {
     
     var imagePicker = UIImagePickerController()
 
-    var produit: UserProductsViewController.Product?
+    var produit: Product?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,15 +122,13 @@ class AddViewController: UIViewController {
         desc.text = produit?.description
         ann.text = String(produit?.annee ?? 0)
         
-        if (produit?.image ?? "") != "" {
-            AF.request("\(Constants.BASE_URL)images/\(produit?.image ?? "")").responseData { (response) in
-                switch response.result {
-                case .success(let data):
-                    self.userImgView.image = UIImage(data: data)
-                case .failure(let error):
-                    print(error)
-                    self.userImgView.image = UIImage(named: "iconUser")
-                }
+        ImageUtils.getImage(imageURL: produit?.image) { result in
+            switch result {
+            case .success(let data):
+                self.userImgView.image = UIImage(data: data)
+            case .failure(let error):
+                print(error)
+                self.userImgView.image = UIImage(named: "iconUser")
             }
         }
         
@@ -143,7 +141,7 @@ class AddViewController: UIViewController {
              UIAction(title: "Ariana", handler: cityChosen),
              UIAction(title: "Beja", handler: cityChosen),
              UIAction(title: "Ben Arous", handler: cityChosen),
-             UIAction(title: "Bizert", handler: cityChosen),
+             UIAction(title: "Bizerte", handler: cityChosen),
              UIAction(title: "Gabes", handler: cityChosen),
              UIAction(title: "Gafsa", handler: cityChosen),
              UIAction(title: "Jendouba", handler: cityChosen),

@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import LocalAuthentication
 import MBProgressHUD
+import 
 
 class LoginViewController: UIViewController {
 
@@ -113,29 +114,6 @@ class LoginViewController: UIViewController {
         
         
         
-    }
-    
-    
-    public class LoginRequest: Codable {
-        let email: String
-        let password: String
-    
-        public init(email: String, password: String) {
-            self.email = email
-            self.password = password
-        }
-    }
-    
-    public class LoginResponse: Codable {
-        let token: String
-        let user: User
-    }
-    
-    public class User: Codable {
-        let _id: String
-        let numTel: String
-        let fullname: String
-        let email: String
     }
 
     

@@ -12,15 +12,10 @@ class ProductsViewController: UIViewController, UISearchResultsUpdating {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var products: [UserProductsViewController.Product] = []
-    var filteredProducts: [UserProductsViewController.Product] = []
-    var filterType: FilterType = .ALL
+    var products: [Product] = []
+    var filteredProducts: [Product] = []
     
-    enum FilterType {
-        case NEW
-        case PROMO
-        case ALL
-    }
+    var vcTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,48 +35,14 @@ class ProductsViewController: UIViewController, UISearchResultsUpdating {
         navigationItem.hidesSearchBarWhenScrolling = true
         
         definesPresentationContext = true
-    
-        switch filterType {
-        case .NEW:
-            self.title = "New products"
-        case .PROMO:
-            self.title = "Products in sales"
-        case .ALL:
-            self.title = "All products"
-        }
+        
+        self.filteredProducts.removeAll()
+        self.filteredProducts.append(contentsOf: self.products)
+        self.tableView.reloadData()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        var filter = ""
-        switch self.filterType {
-        case .NEW:
-            filter = "nouveau"
-        case .PROMO:
-            filter = "promotion"
-        case .ALL:
-            filter = ""
-        }
-        AF.request("\(Constants.BASE_URL)produit/produits?filter=\(filter)", method: .get, encoding: JSONEncoding.default).responseDecodable(of: UserProductsViewController.Products.self) { response in
-            switch response.result {
-            case .success(let prodResponse):
-                print(prodResponse)
-                let code = response.response?.statusCode
-                if (code == 200) {
-                    self.products = prodResponse.Products
-                    self.filteredProducts.removeAll()
-                    self.filteredProducts.append(contentsOf: self.products)
-                    self.tableView.reloadData()
-                } else {
-                    //mat3adihouch
-                    print("fail to connect")
-                }
-            case .failure(let error):
-                print(error)
-                //mat3adihouch
-                }
-            
-            }
         
     }
     
@@ -115,20 +76,25 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             customCell.promoLbl.isHidden = true
         }
-        if let image = product.image {
-            if (image != "") {
-                AF.request("\(Constants.BASE_URL)images/\(image)").responseData { (response) in
-                    switch response.result {
-                    case .success(let data):
-                        customCell.productImgView.image = UIImage(data: data)
-                    case .failure(let error):
-                        print(error)
-                        customCell.productImgView.image = UIImage(named: "audio")
-                    }
-                }
+        
+        ImageUtils.getImage(imageURL: product.image) { result in
+            switch result {
+            case .success(let data):
+                customCell.productImgView.image = UIImage(data: data)
+            case .failure(let error):
+                print(error)
+                customCell.productImgView.image = UIImage(named: "audio")
             }
         }
         return customCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product = products[indexPath.row]
+        if let productDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "productDetails") as? DetailsProdViewController {
+            productDetailsVC.productID = product._id
+            self.navigationController?.pushViewController(productDetailsVC, animated: true)
+        }
     }
 }
 
@@ -136,9 +102,13 @@ extension ProductsViewController: UISearchControllerDelegate, UISearchBarDelegat
     func updateSearchResults(for searchController: UISearchController) {
         let strippedString = searchController.searchBar.text ?? ""
         filteredProducts.removeAll()
-        filteredProducts.append(contentsOf: self.products.filter({ product in
-            product.nom.lowercased().contains(strippedString.lowercased())
-        }))
+        if (strippedString == "") {
+            filteredProducts.append(contentsOf: self.products)
+        } else {
+            filteredProducts.append(contentsOf: self.products.filter({ product in
+                product.nom.lowercased().contains(strippedString.lowercased())
+            }))
+        }
         tableView.reloadData()
     }
     

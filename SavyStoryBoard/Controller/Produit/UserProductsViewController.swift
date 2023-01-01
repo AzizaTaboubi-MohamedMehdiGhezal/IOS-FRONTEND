@@ -14,25 +14,7 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: UITableView!
     
     var products: [Product] = []
-    
-    struct Product : Codable {
-        let _id: String
-        let nom: String
-        let marque: String
-        let boutique: String
-        let promo: Int?
-        let prix: Int
-        let annee: Int
-        let description: String
-        let type: String
-        let city: String
-        let etat: String
-        let image: String?
-    }
-    
-    struct Products: Codable {
-        let Products: [Product]
-    }
+
     
     //var arrProd = [String]()
     override func viewDidLoad() {
@@ -87,21 +69,26 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
         } else {
             customCell.promoLbl.isHidden = true
         }
-        if let image = product.image {
-            if (image != "") {
-                AF.request("\(Constants.BASE_URL)images/\(image)").responseData { (response) in
-                    switch response.result {
-                    case .success(let data):
-                        customCell.productImgView.image = UIImage(data: data)
-                    case .failure(let error):
-                        print(error)
-                        customCell.productImgView.image = UIImage(named: "audio")
-                    }
-                }
+        
+        ImageUtils.getImage(imageURL: product.image) { result in
+            switch result {
+            case .success(let data):
+                customCell.productImgView.image = UIImage(data: data)
+            case .failure(let error):
+                print(error)
+                customCell.productImgView.image = UIImage(named: "audio")
             }
         }
         
         return customCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product = products[indexPath.row]
+        if let productDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "productDetails") as? DetailsProdViewController {
+            productDetailsVC.productID = product._id
+            self.navigationController?.pushViewController(productDetailsVC, animated: true)
+        }
     }
     
     func editProduit(row: Int) {
@@ -157,10 +144,6 @@ class UserProductsViewController: UIViewController, UITableViewDataSource, UITab
         swipeConfiguration.performsFirstActionWithFullSwipe = false
         
         return swipeConfiguration
-    }
-    
-    struct DeleteRequest: Codable {
-        let _id: String
     }
 
 

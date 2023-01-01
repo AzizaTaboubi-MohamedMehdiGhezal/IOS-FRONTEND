@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DC65E56296230AC00AACF7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC65E55296230AC00AACF7B /* TermsAndConditionsViewController.swift */; };
+		2DC65E582962446500AACF7B /* CHATBOTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC65E572962446500AACF7B /* CHATBOTViewController.swift */; };
+		2DC65E5A29624C3600AACF7B /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC65E5929624C3600AACF7B /* BotResponse.swift */; };
 		821D4ACE29573B4D00A5F983 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D4ACD29573B4D00A5F983 /* HomeViewController.swift */; };
 		824C0FFF29293C6700264243 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824C0FFE29293C6700264243 /* LoginViewController.swift */; };
 		8250F9F62931779A00E70BFC /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8250F9F52931779A00E70BFC /* ProfilViewController.swift */; };
 		8250F9F92935079700E70BFC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8250F9F82935079700E70BFC /* Constants.swift */; };
+		826BCE3B295CC88600A76370 /* ViewUsedProdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826BCE3A295CC88600A76370 /* ViewUsedProdController.swift */; };
+		826BCE3D295DE79900A76370 /* DetailsProdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826BCE3C295DE79900A76370 /* DetailsProdViewController.swift */; };
+		826BCE40295E260C00A76370 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826BCE3F295E260C00A76370 /* Models.swift */; };
+		826BCE42295E289A00A76370 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826BCE41295E289A00A76370 /* ImageUtils.swift */; };
 		826E421B29351F4B00319E86 /* ConfirmationOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E421A29351F4A00319E86 /* ConfirmationOTPViewController.swift */; };
 		826E421E2935389400319E86 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E421D2935389400319E86 /* AddViewController.swift */; };
 		826E422029356CDC00319E86 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E421F29356CDC00319E86 /* UpdateViewController.swift */; };
@@ -64,6 +71,9 @@
 
 /* Begin PBXFileReference section */
 		1D80CF8391FC6E495ED115D8 /* Pods-SavyStoryBoard-SavyStoryBoardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavyStoryBoard-SavyStoryBoardUITests.debug.xcconfig"; path = "Target Support Files/Pods-SavyStoryBoard-SavyStoryBoardUITests/Pods-SavyStoryBoard-SavyStoryBoardUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2DC65E55296230AC00AACF7B /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		2DC65E572962446500AACF7B /* CHATBOTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHATBOTViewController.swift; sourceTree = "<group>"; };
+		2DC65E5929624C3600AACF7B /* BotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponse.swift; sourceTree = "<group>"; };
 		3EBD7DDB7A8A6536D7DA83BF /* Pods-SavyStoryBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavyStoryBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-SavyStoryBoardTests/Pods-SavyStoryBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		522FDF6993259DB2EC0FEF9D /* Pods-SavyStoryBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavyStoryBoard.release.xcconfig"; path = "Target Support Files/Pods-SavyStoryBoard/Pods-SavyStoryBoard.release.xcconfig"; sourceTree = "<group>"; };
 		63D42F92C562357F7ED46524 /* Pods-SavyStoryBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavyStoryBoardTests.release.xcconfig"; path = "Target Support Files/Pods-SavyStoryBoardTests/Pods-SavyStoryBoardTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +81,10 @@
 		824C0FFE29293C6700264243 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8250F9F52931779A00E70BFC /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		8250F9F82935079700E70BFC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		826BCE3A295CC88600A76370 /* ViewUsedProdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUsedProdController.swift; sourceTree = "<group>"; };
+		826BCE3C295DE79900A76370 /* DetailsProdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsProdViewController.swift; sourceTree = "<group>"; };
+		826BCE3F295E260C00A76370 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		826BCE41295E289A00A76370 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		826E421A29351F4A00319E86 /* ConfirmationOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationOTPViewController.swift; sourceTree = "<group>"; };
 		826E421D2935389400319E86 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		826E421F29356CDC00319E86 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				8250F9F82935079700E70BFC /* Constants.swift */,
+				826BCE3F295E260C00A76370 /* Models.swift */,
+				826BCE41295E289A00A76370 /* ImageUtils.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -181,6 +197,8 @@
 				82E8B9B3293E2CF00019D0CC /* UsedProdViewController.swift */,
 				8299C97C2956385200D9AE30 /* ProductsViewController.swift */,
 				821D4ACD29573B4D00A5F983 /* HomeViewController.swift */,
+				826BCE3A295CC88600A76370 /* ViewUsedProdController.swift */,
+				826BCE3C295DE79900A76370 /* DetailsProdViewController.swift */,
 			);
 			path = Produit;
 			sourceTree = "<group>";
@@ -267,6 +285,9 @@
 				82F23B492922AEDC00B49B0C /* SplashViewController.swift */,
 				95839DD42943DAD7000F8154 /* MyUITabViewController.swift */,
 				82708A9F2946508900524422 /* ButtonExtensions.swift */,
+				2DC65E55296230AC00AACF7B /* TermsAndConditionsViewController.swift */,
+				2DC65E572962446500AACF7B /* CHATBOTViewController.swift */,
+				2DC65E5929624C3600AACF7B /* BotResponse.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,7 +303,6 @@
 				82F23B0A2922A82400B49B0C /* Sources */,
 				82F23B0B2922A82400B49B0C /* Frameworks */,
 				82F23B0C2922A82400B49B0C /* Resources */,
-				FFC22D35A0E8C9FEC4F805A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -320,7 +340,6 @@
 				82F23B2D2922A82600B49B0C /* Sources */,
 				82F23B2E2922A82600B49B0C /* Frameworks */,
 				82F23B2F2922A82600B49B0C /* Resources */,
-				096D1EF8137142C0733F8B9E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -403,23 +422,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		096D1EF8137142C0733F8B9E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SavyStoryBoard-SavyStoryBoardUITests/Pods-SavyStoryBoard-SavyStoryBoardUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SavyStoryBoard-SavyStoryBoardUITests/Pods-SavyStoryBoard-SavyStoryBoardUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SavyStoryBoard-SavyStoryBoardUITests/Pods-SavyStoryBoard-SavyStoryBoardUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		0F1D290EF17B32F7EF0A7DBC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,23 +488,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FFC22D35A0E8C9FEC4F805A8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SavyStoryBoard/Pods-SavyStoryBoard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SavyStoryBoard/Pods-SavyStoryBoard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SavyStoryBoard/Pods-SavyStoryBoard-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -510,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				826BCE3B295CC88600A76370 /* ViewUsedProdController.swift in Sources */,
 				8250F9F62931779A00E70BFC /* ProfilViewController.swift in Sources */,
 				82708AA02946508900524422 /* ButtonExtensions.swift in Sources */,
 				824C0FFF29293C6700264243 /* LoginViewController.swift in Sources */,
@@ -518,7 +504,9 @@
 				82F23B122922A82400B49B0C /* AppDelegate.swift in Sources */,
 				82F23B142922A82400B49B0C /* SceneDelegate.swift in Sources */,
 				826E422029356CDC00319E86 /* UpdateViewController.swift in Sources */,
+				826BCE40295E260C00A76370 /* Models.swift in Sources */,
 				82AFF6CA29358F9500338B36 /* UserProductsViewController.swift in Sources */,
+				826BCE42295E289A00A76370 /* ImageUtils.swift in Sources */,
 				826E421B29351F4B00319E86 /* ConfirmationOTPViewController.swift in Sources */,
 				82B4F4A22958DA6C00E18F96 /* MBProgressHUD.swift in Sources */,
 				82E8B9B4293E2CF00019D0CC /* UsedProdViewController.swift in Sources */,
@@ -531,11 +519,15 @@
 				8250F9F92935079700E70BFC /* Constants.swift in Sources */,
 				8286E280292312B500D397F0 /* IconDetailViewController.swift in Sources */,
 				826E421E2935389400319E86 /* AddViewController.swift in Sources */,
+				2DC65E582962446500AACF7B /* CHATBOTViewController.swift in Sources */,
+				2DC65E56296230AC00AACF7B /* TermsAndConditionsViewController.swift in Sources */,
 				95839DD52943DAD7000F8154 /* MyUITabViewController.swift in Sources */,
 				82F23B4E2922AEDC00B49B0C /* ViewMenuController.swift in Sources */,
+				2DC65E5A29624C3600AACF7B /* BotResponse.swift in Sources */,
 				82F23B4C2922AEDC00B49B0C /* SplashViewController.swift in Sources */,
 				82F23B4D2922AEDC00B49B0C /* IconCollectionViewCell.swift in Sources */,
 				82B0824B292A442C002F8580 /* ForgotPwViewController.swift in Sources */,
+				826BCE3D295DE79900A76370 /* DetailsProdViewController.swift in Sources */,
 				828E5A602935106D0062CAD2 /* ResetPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

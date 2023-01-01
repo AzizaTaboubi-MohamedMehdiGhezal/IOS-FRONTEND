@@ -37,18 +37,6 @@ class ResetPasswordViewController: UIViewController {
         }
         
     }
-    
-    public class RestPassRequest: Codable {
-        let newPass: String
-        let email: String
-        let otp: String
-        
-        init(newPass: String, email: String, otp: String) {
-            self.newPass = newPass
-            self.email = email
-            self.otp = otp
-        }
-    }
 
     /*
     // MARK: - Navigation

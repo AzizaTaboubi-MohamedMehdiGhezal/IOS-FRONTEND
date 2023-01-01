@@ -16,14 +16,9 @@ class ViewMenuController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        icon.layer.borderWidth = 5
-//        icon.layer.borderColor = UIColor(red: 0.0, green: 0.8, blue: 0.4, alpha: 0.8).cgColor
-//        icon.layer.cornerRadius = 0.0
-//        icon.layer.masksToBounds = true
 
-        //        collectionView.delegate = self
-        //        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
     }
     
@@ -40,43 +35,21 @@ class ViewMenuController: UIViewController{
    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! IconCollectionViewCell
-        //let icon = arrIcons[indexPath.row]
-        //cell.setupCell(photo: icon.photo, cat: icon.cat)
         cell.imgicon.image = UIImage(named: arrIcons[indexPath.row])
         cell.labelicon.text = arrIcons[indexPath.row]
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.darkGray.cgColor
+        cell.layer.cornerRadius = 12
         
-        if cell.isSelected{
-            
-        }else{
-            
-        }
-        
-        //cell.imageDetail.tag = indexPath.row
-        //cell.imageDetail.addTarget(self, action: #selector(viewdetail), for: .touchUpInside)
-//        @objc func viewdetail(sender:UIButton){
-//            let indexpath1 = indexPath(row: sender.tag, section : 0)
-//            let home = self.storyboard?.instantiateViewController(withIdentifier: "IconDetailViewController") as! IconDetailViewController
-//            home.sproduct = arrIcons[indexpath1.row]
-//        }
         return cell
     }
         
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderColor = CGColor(red: 0.0, green: 0.8, blue: 0.4, alpha: 0.4)
-        cell?.layer.borderWidth = 1
-        cell?.isSelected = true
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "IconDetailViewController") as? IconDetailViewController
         vc?.name = arrIcons[indexPath.row]
         self.navigationController?.pushViewController(vc!, animated: true)
-        }
-    
-        func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-            let cell = collectionView.cellForItem(at: indexPath)
-            cell?.layer.borderColor = CGColor(red: 0.0, green: 0.8, blue: 0.4, alpha: 0.4)
-            cell?.layer.borderWidth = 1
-            cell?.isSelected = false
         }
     
 //    struct Icons {

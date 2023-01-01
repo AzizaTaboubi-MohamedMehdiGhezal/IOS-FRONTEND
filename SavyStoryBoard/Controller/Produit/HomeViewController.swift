@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeViewController: UIViewController {
     
@@ -31,21 +32,64 @@ class HomeViewController: UIViewController {
     }
     
     @objc func navigateToPromo() {
-        navigate(filter: .PROMO)
+        navigate(filterType: .PROMO)
     }
     
     @objc func navigateToNews() {
-        navigate(filter: .NEW)
+        navigate(filterType: .NEW)
     }
     
     @objc func navigateToAll() {
-        navigate(filter: .ALL)
+        navigate(filterType: .ALL)
     }
     
-    private func navigate(filter: ProductsViewController.FilterType) {
+    private func navigate(filterType: FilterType) {
+        MBProgressHUDUtils.mbProgressHUB(vc: self, text: "Loading...")
         let productsVC = self.storyboard?.instantiateViewController(withIdentifier: "productsVC") as! ProductsViewController
-        productsVC.filterType = filter
-        self.navigationController?.pushViewController(productsVC, animated: true)
+        switch filterType {
+        case .NEW:
+            productsVC.title = "New products"
+        case .PROMO:
+            productsVC.title = "Products in sales"
+        case .ALL:
+            productsVC.title = "All products"
+        }
+        
+        var filter = ""
+        switch filterType {
+        case .NEW:
+            filter = "nouveau"
+        case .PROMO:
+            filter = "promotion"
+        case .ALL:
+            filter = ""
+        }
+        AF.request("\(Constants.BASE_URL)produit/produits?filter=\(filter)", method: .get, encoding: JSONEncoding.default).responseDecodable(of: Products.self) { response in
+            MBProgressHUDUtils.hideMBProgressHUB(vc: self)
+            switch response.result {
+            case .success(let prodResponse):
+                print(prodResponse)
+                let code = response.response?.statusCode
+                if (code == 200) {
+                    productsVC.products = prodResponse.Products
+                    self.navigationController?.pushViewController(productsVC, animated: true)
+                } else {
+                    //mat3adihouch
+                    print("fail to connect")
+                }
+            case .failure(let error):
+                print(error)
+                //mat3adihouch
+                }
+            
+            }
+        
+    }
+    
+    enum FilterType {
+        case NEW
+        case PROMO
+        case ALL
     }
     
     

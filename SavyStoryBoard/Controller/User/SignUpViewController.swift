@@ -8,6 +8,8 @@
 import UIKit
 import Alamofire
 import GoogleSignIn
+import WebKit
+import SafariServices
 
 class SingUpViewController: UIViewController {
 
@@ -20,6 +22,14 @@ class SingUpViewController: UIViewController {
     @IBOutlet weak var googleLogin: UIButton!
     
     let signInConfig = GIDConfiguration(clientID: "543276089041-hvh1dtd8b5alv7smlf62d620isgpjhu1.apps.googleusercontent.com")
+   
+   
+    
+   // @IBAction func termcond(_ sender: Any) {
+     //   let vc = SFSafariViewController(url: URL(string: "https://www.app-privacy-policy.com/live.php?token=H1oYqCuk1hDIbxrMx35eR14pEIxR4HDd")!)
+        //present(vc, animated: true)
+    //}
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,19 +59,6 @@ class SingUpViewController: UIViewController {
         
     }
     
-    public class SingUpRequest: Codable {
-        let email: String
-        let password: String
-        let numTel: String
-        let fullname: String
-    
-        public init(email: String, password: String, numTel: String, fullname: String) {
-            self.email = email
-            self.password = password
-            self.numTel = numTel
-            self.fullname = fullname
-        }
-    }
 
     @IBAction func tapGoogle(_ sender: Any) {
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in

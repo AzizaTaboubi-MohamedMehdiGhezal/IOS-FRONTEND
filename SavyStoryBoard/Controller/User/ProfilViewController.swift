@@ -47,7 +47,7 @@ class ProfilViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        name.text = "User name: \(appDelegate.user?.user.fullname ?? "")"
+        name.text = appDelegate.user?.user.fullname ?? ""
         if (appDelegate.user == nil) {
             self.dismiss(animated: false)
         }

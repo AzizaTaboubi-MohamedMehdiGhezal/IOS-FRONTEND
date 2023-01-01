@@ -12,7 +12,7 @@ import GoogleSignIn
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var user: LoginViewController.LoginResponse? = nil {
+    var user: LoginResponse? = nil {
         didSet {
             do {
                 let encoder = JSONEncoder()
